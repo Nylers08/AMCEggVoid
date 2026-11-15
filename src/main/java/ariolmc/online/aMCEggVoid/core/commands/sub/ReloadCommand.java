@@ -3,6 +3,7 @@ package ariolmc.online.aMCEggVoid.core.commands.sub;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropModule;
 import ariolmc.online.aMCEggVoid.core.commands.Subcommand;
+import ariolmc.online.aMCEggVoid.core.end.EndModule;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.cfg.CfgUtils;
 import ariolmc.online.aMCEggVoid.core.nether.NetherModule;
@@ -20,20 +21,25 @@ public class ReloadCommand implements Subcommand {
     private final BlazeDropModule blazeDropModule;
     private final PiglinBarterModule piglinBarterModule;
     private final TraderModule traderModule;
+    private final EndModule endModule;
 
     public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule) {
-        this(memberList, itemGiverModule, playerDropModule, netherModule, null, null, null);
+        this(memberList, itemGiverModule, playerDropModule, netherModule, null, null, null, null);
     }
 
     public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule) {
-        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, null, null);
+        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, null, null, null);
     }
 
     public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule, PiglinBarterModule piglinBarterModule) {
-        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, null);
+        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, null, null);
     }
 
     public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule, PiglinBarterModule piglinBarterModule, TraderModule traderModule) {
+        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, traderModule, null);
+    }
+
+    public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule, PiglinBarterModule piglinBarterModule, TraderModule traderModule, EndModule endModule) {
         this.memberList = memberList;
         this.itemGiverModule = itemGiverModule;
         this.playerDropModule = playerDropModule;
@@ -41,6 +47,7 @@ public class ReloadCommand implements Subcommand {
         this.blazeDropModule = blazeDropModule;
         this.piglinBarterModule = piglinBarterModule;
         this.traderModule = traderModule;
+        this.endModule = endModule;
     }
 
     @Override
@@ -61,6 +68,9 @@ public class ReloadCommand implements Subcommand {
         }
         if (traderModule != null) {
             traderModule.reloadCfg();
+        }
+        if (endModule != null) {
+            endModule.reloadCfg();
         }
         memberList.reload();
 

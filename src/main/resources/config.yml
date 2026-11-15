@@ -64,3 +64,10 @@ trader:
       buy2: "mega_emerald:2"
       sell: "GOLDEN_APPLE:3"
       max-uses: 999
+
+# Настройки Энда (/eggvoid endgen)
+end:
+  grid-y: 64
+  scatter-chance: 0.045
+  generate-pillars: true
+  spawn-dragon: true
