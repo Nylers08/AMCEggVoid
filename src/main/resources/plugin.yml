@@ -1,0 +1,13 @@
+name: AMCEggVoid
+version: '${version}'
+
+main: ariolmc.online.aMCEggVoid.AMCEggVoid
+api-version: '26.2'
+load: POSTWORLD
+depend:
+  - FastAsyncWorldEdit
+
+commands:
+  eggvoid:
+    description: Команда для админа
+    usage: /eggvoid

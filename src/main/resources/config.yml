@@ -1,0 +1,76 @@
+members:
+  - "Nylers0"
+  - "Vilwi"
+
+non-drop-items:
+  - "BLAZE_ROD"
+  - "BLAZE_POWDER"
+  - "OBSIDIAN"
+  - "ENDER_PEARL"
+  - "ENDER_EYE"
+  - "DRAGON_EGG"
+
+boss-bar:
+  sound: "minecraft:block.note_block.bit"
+  volume: 0.5
+  pitch: 0.5
+  sec-to-sound: 3
+
+  delay-tick-update: 20
+
+  text-time-info: "§x§F§C§D§0§5§CВр§x§F§C§C§3§5§Eем§x§F§C§B§5§6§1я §x§F§C§A§8§6§3до§x§F§C§9§A§6§5 н§x§F§C§8§D§6§7ов§x§F§B§7§F§6§Aых§x§F§B§7§2§6§C п§x§F§B§6§4§6§Eре§x§F§B§5§7§7§0дм§x§F§B§4§9§7§3ет§x§F§B§3§C§7§5ов: §6%sс"
+  text-give-item: "§x§F§C§D§0§5§CПр§x§F§C§C§8§5§Cед§x§F§C§B§F§5§Cме§x§F§C§B§7§5§Cты§x§F§C§A§F§5§C в§x§F§C§A§7§5§Cыд§x§F§C§9§E§5§Cан§x§F§C§9§6§5§Cы!"
+
+item-giver:
+  sound: "minecraft:block.note_block.bell"
+  volume: 1
+  pitch: 1
+
+item-tier:
+  levels:
+    1:
+      tick-start: 0
+      give-tick-delay: 100
+
+      items:
+        item1:
+          name: "§6Мега алмаз"
+          material: "DIAMOND"
+          min: 1
+          max: 12
+          lore:
+            - "§7Его ебали"
+            - "§75 узбеков"
+
+        item2:
+          material: "STICK"
+          min: 1
+          max: 12
+
+    2:
+      tick-start: 400
+      give-tick-delay: 200
+
+      items:
+        item1:
+          name: "§aМега изюм"
+          material: "EMERALD"
+          min: 1
+          max: 12
+          lore:
+            - "§75 узбеков"
+
+        item2:
+          material: "OAK_SLAB"
+          min: 1
+          max: 12
+
+nether:
+  grid-y: 64
+  netherrack-step: 3
+  blaze-zone:
+    brick-step: 2
+    max-blocks-on-edge: 15
+    min-blocks-on-edge: 5
+    max-zones: 3
+    padding: 20
