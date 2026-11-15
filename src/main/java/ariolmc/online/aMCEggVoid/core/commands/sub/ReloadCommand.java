@@ -1,6 +1,7 @@
 package ariolmc.online.aMCEggVoid.core.commands.sub;
 
 import ariolmc.online.aMCEggVoid.core.MemberList;
+import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropModule;
 import ariolmc.online.aMCEggVoid.core.commands.Subcommand;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.cfg.CfgUtils;
@@ -14,12 +15,18 @@ public class ReloadCommand implements Subcommand {
     private final ItemGiverModule itemGiverModule;
     private final PlayerDropModule playerDropModule;
     private final NetherModule netherModule;
+    private final BlazeDropModule blazeDropModule;
 
     public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule) {
+        this(memberList, itemGiverModule, playerDropModule, netherModule, null);
+    }
+
+    public ReloadCommand(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule) {
         this.memberList = memberList;
         this.itemGiverModule = itemGiverModule;
         this.playerDropModule = playerDropModule;
         this.netherModule = netherModule;
+        this.blazeDropModule = blazeDropModule;
     }
 
     @Override
@@ -31,6 +38,9 @@ public class ReloadCommand implements Subcommand {
         playerDropModule.getMainMaterialList().reload();
         if (netherModule != null) {
             netherModule.reloadCfg();
+        }
+        if (blazeDropModule != null) {
+            blazeDropModule.reloadCfg();
         }
         memberList.reload();
 

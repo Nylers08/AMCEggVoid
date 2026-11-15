@@ -1,6 +1,7 @@
 package ariolmc.online.aMCEggVoid;
 
 import ariolmc.online.aMCEggVoid.core.MemberList;
+import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropModule;
 import ariolmc.online.aMCEggVoid.core.commands.EggVoidCommands;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.itemGiver.listener.ConnectPlayerListener;
@@ -30,6 +31,8 @@ public final class AMCEggVoid extends JavaPlugin {
     @Getter
     private static NetherModule netherModule;
 
+    @Getter
+    private static BlazeDropModule blazeDropModule;
 
     @Override
     public void onEnable() {
@@ -42,11 +45,12 @@ public final class AMCEggVoid extends JavaPlugin {
         itemGiverModule = new ItemGiverModule(memberList);
         playerDropModule = new PlayerDropModule();
         netherModule = new NetherModule();
-
+        blazeDropModule = new BlazeDropModule(itemGiverModule.getItemTier().getUniqueItemsCfg());
 
         Bukkit.getPluginManager().registerEvents(new ConnectPlayerListener(memberList, itemGiverModule), this);
         Bukkit.getPluginManager().registerEvents(playerDropModule.getPlayerDeathDropListener(), this);
-        this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule));
+        Bukkit.getPluginManager().registerEvents(blazeDropModule.getDeathListener(), this);
+        this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule));
     }
 
     @Override
