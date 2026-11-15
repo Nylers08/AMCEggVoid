@@ -47,6 +47,8 @@ item-tier:
         - "BONE_MEAL:4:12"
         - "FLOWER_POT:1:2"
         - "sigma_brick:1:1"
+        - "ARROW:5:12"
+        - "SPECTRAL_ARROW:2:7"
 
     2:
       tick-start: 800
@@ -91,6 +93,8 @@ item-tier:
         - "MELON_SLICE:3:8"
         - "CAMPFIRE:1:1"
         - "goblin_compass:1:1"
+        - "ARROW:6:14"
+        - "SPECTRAL_ARROW:3:8"
 
     3:
       tick-start: 1800
@@ -135,6 +139,7 @@ item-tier:
         - "SHEEP_SPAWN_EGG:1:2"
         - "SPYGLASS:1:1"
         - "sleepy_pillow:1:1"
+        - "SPECTRAL_ARROW:4:9"
 
     4:
       tick-start: 3000
@@ -176,6 +181,7 @@ item-tier:
         - "CAKE:1:1"
         - "LEAD:1:2"
         - "grandma_pan:1:1"
+        - "SPECTRAL_ARROW:4:10"
 
     5:
       tick-start: 4400
@@ -217,6 +223,7 @@ item-tier:
         - "ZOMBIE_SPAWN_EGG:1:1"
         - "SADDLE:1:1"
         - "sigma_brick:1:1"
+        - "SPECTRAL_ARROW:4:11"
 
     6:
       tick-start: 6000
@@ -263,6 +270,7 @@ item-tier:
         - "OAK_PLANKS:10:20"
         - "DEEPSLATE_BRICKS:8:16"
         - "GLASS:8:16"
+        - "SPECTRAL_ARROW:5:12"
 
     7:
       tick-start: 7800
@@ -352,6 +360,7 @@ item-tier:
         - "OAK_PLANKS:10:20"
         - "DEEPSLATE_BRICKS:8:16"
         - "GLASS:8:16"
+        - "ARROW:12:26"
 
     9:
       tick-start: 12000
@@ -395,6 +404,8 @@ item-tier:
         - "OAK_PLANKS:10:20"
         - "DEEPSLATE_BRICKS:8:16"
         - "GLASS:8:16"
+        - "ARROW:13:28"
+        - "SPECTRAL_ARROW:6:15"
 
     10:
       tick-start: 14400
@@ -438,6 +449,8 @@ item-tier:
         - "OAK_PLANKS:10:20"
         - "DEEPSLATE_BRICKS:8:16"
         - "GLASS:8:16"
+        - "ARROW:14:30"
+        - "SPECTRAL_ARROW:7:16"
 
     11:
       tick-start: 17000
@@ -483,6 +496,8 @@ item-tier:
         - "PURPUR_BLOCK:8:18"
         - "QUARTZ_BLOCK:8:16"
         - "BLACKSTONE:10:20"
+        - "ARROW:15:32"
+        - "SPECTRAL_ARROW:8:17"
 
     12:
       tick-start: 19800
@@ -550,6 +565,8 @@ item-tier:
         - "PURPUR_BLOCK:8:18"
         - "QUARTZ_BLOCK:8:16"
         - "BLACKSTONE:10:20"
+        - "ARROW:16:34"
+        - "SPECTRAL_ARROW:8:18"
 
     13:
       tick-start: 22800
@@ -617,6 +634,8 @@ item-tier:
         - "PURPUR_BLOCK:8:18"
         - "QUARTZ_BLOCK:8:16"
         - "BLACKSTONE:10:20"
+        - "ARROW:17:36"
+        - "SPECTRAL_ARROW:8:19"
 
     14:
       tick-start: 26000
@@ -681,6 +700,8 @@ item-tier:
         - "PURPUR_BLOCK:8:18"
         - "QUARTZ_BLOCK:8:16"
         - "BLACKSTONE:10:20"
+        - "ARROW:18:38"
+        - "SPECTRAL_ARROW:9:20"
 
     15:
       tick-start: 29400
@@ -759,6 +780,8 @@ item-tier:
         - "PURPUR_BLOCK:8:18"
         - "QUARTZ_BLOCK:8:16"
         - "BLACKSTONE:10:20"
+        - "ARROW:19:40"
+        - "SPECTRAL_ARROW:10:21"
 
 # Настройка дополнительного нестандартного дропа с ифритов (Blaze)
 blaze-drop:
@@ -800,6 +823,8 @@ blaze-drop:
     - "mega_diamond:1:2:0.06"
     - "mega_emerald:1:2:0.08"
     - "void_sword:1:1:0.02"
+    - "ARROW:4:12:0.15"
+    - "SPECTRAL_ARROW:2:6:0.10"
 
 # Настройка лута в сундуках по мирам (nether, в будущем end и др.)
 chest:
@@ -856,6 +881,8 @@ chest:
       - "uzbek_bread:1:2:0.25"
       - "lucky_fish:1:1:0.20"
       - "cursed_potato:1:2:0.25"
+      - "ARROW:6:16:0.45"
+      - "SPECTRAL_ARROW:4:10:0.35"
 
 # Настройка уникального лута при торгах с пиглинами (Piglin Bartering)
 piglin-barter:
@@ -979,3 +1006,11 @@ piglin-barter:
       min: 1
       max: 1
       chance: 0.02
+    - item: "ARROW"
+      min: 4
+      max: 12
+      chance: 0.14
+    - item: "SPECTRAL_ARROW"
+      min: 2
+      max: 8
+      chance: 0.10
