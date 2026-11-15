@@ -1,22 +1,28 @@
 package ariolmc.online.aMCEggVoid.core.itemGiver;
 
 import ariolmc.online.aMCEggVoid.core.cfg.LevelItemTierCfg;
+import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
+import lombok.Getter;
 
 import java.util.List;
 
 public class ItemTier {
 
-    private LevelItemTierCfg cfg = new LevelItemTierCfg();
+    @Getter
+    private final UniqueItemsCfg uniqueItemsCfg;
+    private final LevelItemTierCfg cfg;
     private List<LevelItemTier> levels;
 
-    public ItemTier(){
+    public ItemTier() {
+        this.uniqueItemsCfg = new UniqueItemsCfg();
+        this.cfg = new LevelItemTierCfg(this.uniqueItemsCfg);
         reload();
     }
 
-    public void reload(){
+    public void reload() {
+        uniqueItemsCfg.load();
         levels = cfg.loadLevels();
     }
-
 
     public void addLevel(LevelItemTier levelItemTier) {
         levels.add(levelItemTier);
@@ -28,7 +34,6 @@ public class ItemTier {
         }
         LevelItemTier currentLevel = levels.getFirst();
         long tickOffset = Long.MAX_VALUE;
-
 
         for (LevelItemTier level : levels) {
             long tickStart = level.getTickStart();

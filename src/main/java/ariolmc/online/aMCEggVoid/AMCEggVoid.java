@@ -35,6 +35,7 @@ public final class AMCEggVoid extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
+        saveResource("unique_items.yml", false);
 
         memberList = new MemberList();
 

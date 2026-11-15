@@ -1,27 +1,31 @@
 package ariolmc.online.aMCEggVoid.core.cfg;
 
-import ariolmc.online.aMCEggVoid.core.ItemStackBuilder;
 import ariolmc.online.aMCEggVoid.core.itemGiver.LevelItemTier;
 import ariolmc.online.aMCEggVoid.core.itemGiver.RewardItem;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LevelItemTierCfg {
 
-    public List<LevelItemTier> loadLevels(){
-        FileConfiguration cfg = CfgUtils.getConfig();
+    private final UniqueItemsCfg uniqueItemsCfg;
 
+    public LevelItemTierCfg(UniqueItemsCfg uniqueItemsCfg) {
+        this.uniqueItemsCfg = uniqueItemsCfg;
+    }
+
+    public List<LevelItemTier> loadLevels() {
+        FileConfiguration cfg = CfgUtils.getConfig();
         List<LevelItemTier> levelsList = new ArrayList<>();
 
         ConfigurationSection levelsSection = cfg.getConfigurationSection("item-tier.levels");
         if (levelsSection == null) {
             return levelsList;
         }
-        for (String key : levelsSection.getKeys(false)){
+
+        for (String key : levelsSection.getKeys(false)) {
             ConfigurationSection levelSection = levelsSection.getConfigurationSection(key);
             if (levelSection == null) {
                 continue;
@@ -39,38 +43,54 @@ public class LevelItemTierCfg {
         return levelsList;
     }
 
-    private List<RewardItem> loadItems(ConfigurationSection levelSection){
+    private List<RewardItem> loadItems(ConfigurationSection levelSection) {
         List<RewardItem> items = new ArrayList<>();
+
+        // Формат 1: items как список строк с ID уникальных предметов
+        // items:
+        //   - "mega_diamond"
+        //   - "stick"
+        if (levelSection.isList("items")) {
+            List<String> idList = levelSection.getStringList("items");
+            for (String id : idList) {
+                RewardItem base = uniqueItemsCfg.getItem(id);
+                if (base != null) {
+                    items.add(base);
+                }
+            }
+            return items;
+        }
+
+        // Формат 2: items как секция с ключами
         ConfigurationSection itemsSection = levelSection.getConfigurationSection("items");
         if (itemsSection == null) {
             return items;
         }
 
-        for (String key : itemsSection.getKeys(false)){
-            ConfigurationSection itemSection = itemsSection.getConfigurationSection(key);
-            if (itemSection == null) {
+        for (String key : itemsSection.getKeys(false)) {
+            // item1: "mega_diamond"
+            if (itemsSection.isString(key)) {
+                String id = itemsSection.getString(key);
+                RewardItem base = uniqueItemsCfg.getItem(id);
+                if (base != null) {
+                    items.add(base);
+                }
                 continue;
             }
-            ItemStack item = loadItem(itemSection);
-            int min = itemSection.getInt("min");
-            int max = itemSection.getInt("max");
-            RewardItem rewardItem = new RewardItem(item, min, max);
-            items.add(rewardItem);
+
+            // item1: { id: "mega_diamond", min: 2, max: 5 }
+            ConfigurationSection itemSec = itemsSection.getConfigurationSection(key);
+            if (itemSec != null) {
+                String id = itemSec.getString("id", key);
+                RewardItem base = uniqueItemsCfg.getItem(id);
+                if (base != null) {
+                    int min = itemSec.getInt("min", base.minAmount());
+                    int max = itemSec.getInt("max", base.maxAmount());
+                    items.add(new RewardItem(base.itemStack(), min, max));
+                }
+            }
         }
 
         return items;
-    }
-
-    private ItemStack loadItem(ConfigurationSection itemSection){
-        String name = itemSection.getString("name", "");
-        String materialName = itemSection.getString("material", "STONE");
-        List<String> lore = itemSection.getStringList("lore");
-
-        return new ItemStackBuilder()
-                .name(name)
-                .amount(1)
-                .materialName(materialName)
-                .lore(lore)
-                .build();
     }
 }
