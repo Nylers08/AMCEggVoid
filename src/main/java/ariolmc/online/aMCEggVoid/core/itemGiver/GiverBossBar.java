@@ -26,6 +26,7 @@ public class GiverBossBar {
     private long tickToGive;
     private long tickLeft;
     private int secToGive;
+    private int lastSoundSec = -1;
 
     private BukkitTask taskUpdate;
     private boolean hasStart = false;
@@ -67,8 +68,12 @@ public class GiverBossBar {
 
         this.tickToGive = tickToGive;
         this.tickLeft = tickToGive;
+        this.secToGive = (int) Math.ceil(tickLeft / 20.0);
+        this.lastSoundSec = -1;
 
         buildBossBarIsNull(players);
+        bossBar.setTitle(buildTitle());
+        bossBar.setProgress(calcProgress());
         startUpdateTask();
     }
 
@@ -113,13 +118,14 @@ public class GiverBossBar {
         if(taskUpdate != null){
             taskUpdate.cancel();
         }
+        long step = Math.min(2L, Math.max(1L, tickLeft));
         taskUpdate = Bukkit.getScheduler().runTaskLater(
-                AMCEggVoid.getInstance(), ()->update(getDelayTickUpdate()), getDelayTickUpdate());
+                AMCEggVoid.getInstance(), ()->update(step), step);
     }
 
     private void update(long tickPassed){
-        tickLeft -= tickPassed;
-        secToGive = (int) tickLeft /20;
+        tickLeft = Math.max(0L, tickLeft - tickPassed);
+        secToGive = (int) Math.ceil(tickLeft / 20.0);
 
         String title = buildTitle();
         double progress = calcProgress();
@@ -129,23 +135,24 @@ public class GiverBossBar {
 
         playSound();
 
-        if(progress != 0 && hasStart){
+        if(tickLeft > 0 && hasStart){
             startUpdateTask();
         }
     }
 
     private double calcProgress(){
         if(tickLeft <= 0 || tickToGive <= 0){
-            return 0;
+            return 0.0;
         }
 
-        return Math.min(1.0, Math.max(0.0, (double) tickLeft / tickToGive));
+        return Math.clamp((double) tickLeft / tickToGive, 0.0, 1.0);
     }
 
     private void playSound(){
-        if(secToGive > getSecToPlaySound()){
+        if(secToGive <= 0 || secToGive > getSecToPlaySound() || secToGive == lastSoundSec){
             return;
         }
+        lastSoundSec = secToGive;
 
         bossBar.getPlayers().forEach(p->p.playSound(p.getLocation(), getSound(), getVolume(), getPitch()));
     }
