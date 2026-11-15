@@ -13,6 +13,8 @@ import ariolmc.online.aMCEggVoid.core.nether.NetherModule;
 import ariolmc.online.aMCEggVoid.core.piglinBarter.PiglinBarterModule;
 import ariolmc.online.aMCEggVoid.core.playerDrop.PlayerDropModule;
 import ariolmc.online.aMCEggVoid.core.trader.TraderModule;
+import ariolmc.online.aMCEggVoid.core.victory.VictoryListener;
+import ariolmc.online.aMCEggVoid.core.victory.VictoryService;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.generator.ChunkGenerator;
@@ -55,6 +57,9 @@ public final class AMCEggVoid extends JavaPlugin {
     @Getter
     private static EndModule endModule;
 
+    @Getter
+    private static VictoryService victoryService;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -75,6 +80,7 @@ public final class AMCEggVoid extends JavaPlugin {
         piglinBarterModule = new PiglinBarterModule(uniqueItemsCfg, lootCfg);
         traderModule = new TraderModule(uniqueItemsCfg);
         endModule = new EndModule(this);
+        victoryService = new VictoryService(this);
 
         Bukkit.getPluginManager().registerEvents(new ConnectPlayerListener(memberList, itemGiverModule), this);
         Bukkit.getPluginManager().registerEvents(playerDropModule.getPlayerDeathDropListener(), this);
@@ -82,6 +88,7 @@ public final class AMCEggVoid extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(piglinBarterModule.getBarterListener(), this);
         Bukkit.getPluginManager().registerEvents(netherModule.getSpawnerProtectListener(), this);
         Bukkit.getPluginManager().registerEvents(endModule.getDragonEggVoidService(), this);
+        Bukkit.getPluginManager().registerEvents(new VictoryListener(victoryService), this);
         this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, traderModule, endModule));
     }
 
@@ -93,6 +100,9 @@ public final class AMCEggVoid extends JavaPlugin {
         }
         if (endModule != null) {
             endModule.stop();
+        }
+        if (victoryService != null) {
+            victoryService.stopCelebration();
         }
     }
 
