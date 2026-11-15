@@ -7,12 +7,15 @@ import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,13 +81,52 @@ public class UniqueItemsCfg {
                 max = min;
             }
 
-            ItemStack item = new ItemStackBuilder()
+            boolean unbreakable = itemSec.getBoolean("unbreakable", false);
+            Integer customModelData = itemSec.contains("custom-model-data") ? itemSec.getInt("custom-model-data") : null;
+
+            ItemStackBuilder builder = new ItemStackBuilder()
                     .name(name)
                     .amount(1)
                     .materialName(material)
                     .lore(lore)
-                    .build();
+                    .unbreakable(unbreakable)
+                    .customModelData(customModelData);
 
+            // Парсим зачарования
+            if (itemSec.isConfigurationSection("enchantments")) {
+                ConfigurationSection enchSec = itemSec.getConfigurationSection("enchantments");
+                if (enchSec != null) {
+                    for (String enchKey : enchSec.getKeys(false)) {
+                        Enchantment ench = ItemStackBuilder.matchEnchantment(enchKey);
+                        int lvl = enchSec.getInt(enchKey, 1);
+                        if (ench != null) {
+                            builder.addEnchantment(ench, lvl);
+                        }
+                    }
+                }
+            } else if (itemSec.isList("enchantments")) {
+                for (String enchEntry : itemSec.getStringList("enchantments")) {
+                    String[] parts = enchEntry.split(":");
+                    Enchantment ench = ItemStackBuilder.matchEnchantment(parts[0]);
+                    int lvl = parts.length > 1 ? Integer.parseInt(parts[1]) : 1;
+                    if (ench != null) {
+                        builder.addEnchantment(ench, lvl);
+                    }
+                }
+            }
+
+            // Парсим флаги
+            if (itemSec.isList("flags")) {
+                List<ItemFlag> flags = new ArrayList<>();
+                for (String fName : itemSec.getStringList("flags")) {
+                    try {
+                        flags.add(ItemFlag.valueOf(fName.toUpperCase()));
+                    } catch (IllegalArgumentException ignored) {}
+                }
+                builder.flags(flags);
+            }
+
+            ItemStack item = builder.build();
             RewardItem rewardItem = new RewardItem(item, min, max);
             this.uniqueItems.put(key.toLowerCase(), rewardItem);
         }

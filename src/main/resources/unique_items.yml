@@ -7,11 +7,21 @@ items:
     lore:
       - "§7Его ебали"
       - "§75 узбеков"
+    enchantments:
+      unbreaking: 3
 
-  stick:
-    material: "STICK"
+  void_sword:
+    name: "§cКлинок Бездны"
+    material: "NETHERITE_SWORD"
     min: 1
-    max: 12
+    max: 1
+    lore:
+      - "§7Закалён в пустоте EggVoid"
+    enchantments:
+      sharpness: 5
+      fire_aspect: 2
+      unbreaking: 3
+    unbreakable: true
 
   mega_emerald:
     name: "§aМега изюм"
@@ -20,8 +30,3 @@ items:
     max: 12
     lore:
       - "§75 узбеков"
-
-  oak_slab:
-    material: "OAK_SLAB"
-    min: 1
-    max: 12

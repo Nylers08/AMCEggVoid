@@ -34,15 +34,16 @@ item-tier:
 
       items:
         - "mega_diamond"
-        - "stick"
+        - "STICK:1:12"
 
     2:
       tick-start: 400
       give-tick-delay: 200
 
       items:
+        - "void_sword"
         - "mega_emerald"
-        - "oak_slab"
+        - "OAK_SLAB:1:12"
 
 nether:
   grid-y: 64
