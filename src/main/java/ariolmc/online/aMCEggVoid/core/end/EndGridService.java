@@ -46,6 +46,8 @@ public class EndGridService {
     public int clearEndArea(World endWorld, int radius) {
         if (endWorld == null) return 0;
 
+        clearEndCrystals(endWorld, radius);
+
         int minY = endWorld.getMinHeight();
         int maxY = endWorld.getMaxHeight() - 1;
 
@@ -163,9 +165,32 @@ public class EndGridService {
     }
 
     /**
+     * Удаляет все старые кристаллы Края в заданном радиусе вокруг центра.
+     */
+    private void clearEndCrystals(World endWorld, int radius) {
+        int minChunkX = Math.floorDiv(-radius, 16);
+        int maxChunkX = Math.floorDiv(radius, 16);
+        int minChunkZ = Math.floorDiv(-radius, 16);
+        int maxChunkZ = Math.floorDiv(radius, 16);
+        for (int cx = minChunkX; cx <= maxChunkX; cx++) {
+            for (int cz = minChunkZ; cz <= maxChunkZ; cz++) {
+                endWorld.loadChunk(cx, cz, false);
+            }
+        }
+        double maxDistSq = (double) radius * radius;
+        for (EnderCrystal crystal : endWorld.getEntitiesByClass(EnderCrystal.class)) {
+            Location loc = crystal.getLocation();
+            if (loc.getX() * loc.getX() + loc.getZ() * loc.getZ() <= maxDistSq) {
+                crystal.remove();
+            }
+        }
+    }
+
+    /**
      * Строит 10 ванильных обсидиановых столбов с кристаллами Края по кругу радиусом 43.
      */
     private void generateObsidianPillars(World endWorld, int baseY) {
+        clearEndCrystals(endWorld, PILLAR_RING_RADIUS + 32);
         int bottomY = Math.max(endWorld.getMinHeight() + 1, baseY - 20);
 
         for (int i = 0; i < PILLAR_COUNT; i++) {
