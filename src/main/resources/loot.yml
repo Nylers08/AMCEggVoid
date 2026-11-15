@@ -7,7 +7,7 @@ item-tier:
       items:
         - "OAK_PLANKS:6:16"
         - "OAK_PLANKS:4:12"
-        - "OBSIDIAN:1:6"
+        - "OBSIDIAN:1:3"
         - "SPRUCE_PLANKS:6:16"
         - "BIRCH_PLANKS:6:16"
         - "DARK_OAK_PLANKS:6:16"
@@ -38,7 +38,6 @@ item-tier:
         - "CRAFTING_TABLE:1:1"
         - "WOODEN_PICKAXE:1:1"
         - "WOODEN_AXE:1:1"
-        - "OBSIDIAN:1:1"
         - "ENDER_PEARL:1:1"
         - "uzbek_bread:1:1"
         - "sus_cookie:1:2"
@@ -48,8 +47,6 @@ item-tier:
         - "BONE_MEAL:4:12"
         - "FLOWER_POT:1:2"
         - "sigma_brick:1:1"
-        - "OBSIDIAN:1:2"
-        - "OBSIDIAN:1:2"
 
     2:
       tick-start: 800
@@ -58,7 +55,7 @@ item-tier:
         - "OAK_PLANKS:8:18"
         - "SPRUCE_PLANKS:6:16"
         - "JUNGLE_PLANKS:6:16"
-        - "OBSIDIAN:1:6"
+        - "OBSIDIAN:1:3"
         - "COBBLESTONE:8:18"
         - "STONE:6:14"
         - "SMOOTH_STONE:4:12"
@@ -86,7 +83,6 @@ item-tier:
         - "STONE_SWORD:1:1"
         - "STONE_SHOVEL:1:1"
         - "LEATHER_BOOTS:1:1"
-        - "OBSIDIAN:1:2"
         - "ENDER_PEARL:1:1"
         - "lucky_fish:1:1"
         - "IRON_INGOT:1:3"
@@ -95,8 +91,6 @@ item-tier:
         - "MELON_SLICE:3:8"
         - "CAMPFIRE:1:1"
         - "goblin_compass:1:1"
-        - "OBSIDIAN:1:2"
-        - "OBSIDIAN:1:2"
 
     3:
       tick-start: 1800
@@ -106,7 +100,7 @@ item-tier:
         - "DARK_OAK_PLANKS:8:20"
         - "COBBLESTONE:8:20"
         - "STONE_BRICKS:6:16"
-        - "OBSIDIAN:1:6"
+        - "OBSIDIAN:1:3"
         - "MOSSY_STONE_BRICKS:4:12"
         - "DEEPSLATE:6:16"
         - "DEEPSLATE_BRICKS:4:12"
@@ -132,8 +126,7 @@ item-tier:
         - "SHIELD:1:1"
         - "BOW:1:1"
         - "ARROW:6:16"
-        - "OBSIDIAN:1:2"
-        - "ENDER_PEARL:1:2"
+        - "ENDER_PEARL:1:1"
         - "starter_helmet:1:1"
         - "GOLD_INGOT:1:4"
         - "DIAMOND:1:1"
@@ -142,8 +135,6 @@ item-tier:
         - "SHEEP_SPAWN_EGG:1:2"
         - "SPYGLASS:1:1"
         - "sleepy_pillow:1:1"
-        - "OBSIDIAN:1:3"
-        - "OBSIDIAN:1:3"
 
     4:
       tick-start: 3000
@@ -155,7 +146,7 @@ item-tier:
         - "DEEPSLATE_TILES:6:14"
         - "OAK_LOG:4:12"
         - "SANDSTONE:6:16"
-        - "OBSIDIAN:1:6"
+        - "OBSIDIAN:1:3"
         - "RED_SANDSTONE:6:16"
         - "QUARTZ_BLOCK:4:10"
         - "COPPER_BLOCK:2:5"
@@ -175,9 +166,7 @@ item-tier:
         - "FLINT_AND_STEEL:1:1"
         - "COOKED_BEEF:3:6"
         - "PUMPKIN_PIE:2:5"
-        - "OBSIDIAN:1:3"
-        - "OBSIDIAN:1:2"
-        - "ENDER_PEARL:1:2"
+        - "ENDER_PEARL:1:1"
         - "cursed_potato:1:1"
         - "knockback_stick:1:1"
         - "GOLDEN_APPLE:1:1"
@@ -187,8 +176,6 @@ item-tier:
         - "CAKE:1:1"
         - "LEAD:1:2"
         - "grandma_pan:1:1"
-        - "OBSIDIAN:2:4"
-        - "OBSIDIAN:2:4"
 
     5:
       tick-start: 4400
@@ -197,9 +184,8 @@ item-tier:
         - "STONE_BRICKS:8:18"
         - "OAK_PLANKS:8:18"
         - "COBBLESTONE:8:16"
-        - "OBSIDIAN:2:4"
-        - "OBSIDIAN:1:3"
-        - "ENDER_PEARL:1:2"
+        - "OBSIDIAN:1:2"
+        - "ENDER_PEARL:1:1"
         - "IRON_INGOT:2:6"
         - "IRON_INGOT:3:6"
         - "GOLD_INGOT:2:6"
@@ -231,9 +217,6 @@ item-tier:
         - "ZOMBIE_SPAWN_EGG:1:1"
         - "SADDLE:1:1"
         - "sigma_brick:1:1"
-        - "OBSIDIAN:2:4"
-        - "OBSIDIAN:2:4"
-        - "OBSIDIAN:1:6"
 
     6:
       tick-start: 6000
@@ -264,10 +247,8 @@ item-tier:
         - "STICKY_PISTON:1:2"
         - "SLIME_BLOCK:2:5"
         - "HONEY_BLOCK:2:4"
-        - "OBSIDIAN:2:5"
-        - "OBSIDIAN:2:4"
-        - "ENDER_PEARL:1:3"
-        - "ENDER_PEARL:1:2"
+        - "OBSIDIAN:1:3"
+        - "ENDER_PEARL:1:1"
         - "BLAZE_POWDER:1:2"
         - "starter_helmet:1:1"
         - "lucky_fish:1:1"
@@ -277,9 +258,6 @@ item-tier:
         - "WOLF_SPAWN_EGG:1:1"
         - "NAME_TAG:1:2"
         - "golden_carrot_king:1:1"
-        - "OBSIDIAN:2:5"
-        - "OBSIDIAN:2:5"
-        - "OBSIDIAN:1:6"
 
     7:
       tick-start: 7800
@@ -304,10 +282,8 @@ item-tier:
         - "SPECTRAL_ARROW:4:10"
         - "GOLDEN_CARROT:3:6"
         - "COOKED_PORKCHOP:4:8"
-        - "OBSIDIAN:2:6"
-        - "OBSIDIAN:2:5"
-        - "ENDER_PEARL:2:4"
-        - "ENDER_PEARL:1:3"
+        - "OBSIDIAN:1:3"
+        - "ENDER_PEARL:1:2"
         - "BLAZE_POWDER:1:3"
         - "EXPERIENCE_BOTTLE:2:6"
         - "ANVIL:1:1"
@@ -322,9 +298,6 @@ item-tier:
         - "ZOMBIE_SPAWN_EGG:1:1"
         - "VILLAGER_SPAWN_EGG:1:1"
         - "sleepy_pillow:1:1"
-        - "OBSIDIAN:3:6"
-        - "OBSIDIAN:3:6"
-        - "OBSIDIAN:1:6"
 
     8:
       tick-start: 9800
@@ -337,11 +310,9 @@ item-tier:
         - "EMERALD:2:6"
         - "DIAMOND:1:3"
         - "DIAMOND:2:3"
-        - "OBSIDIAN:3:6"
-        - "OBSIDIAN:2:6"
+        - "OBSIDIAN:1:3"
         - "CRYING_OBSIDIAN:1:4"
-        - "ENDER_PEARL:2:4"
-        - "ENDER_PEARL:1:3"
+        - "ENDER_PEARL:1:2"
         - "BLAZE_POWDER:1:3"
         - "EXPERIENCE_BOTTLE:3:8"
         - "BOOKSHELF:2:5"
@@ -366,9 +337,6 @@ item-tier:
         - "VILLAGER_SPAWN_EGG:1:1"
         - "SLIME_SPAWN_EGG:1:1"
         - "grandma_pan:1:1"
-        - "OBSIDIAN:3:6"
-        - "OBSIDIAN:3:6"
-        - "OBSIDIAN:1:6"
 
     9:
       tick-start: 12000
@@ -383,11 +351,9 @@ item-tier:
         - "DIAMOND:2:5"
         - "EMERALD:3:7"
         - "EXPERIENCE_BOTTLE:4:10"
-        - "OBSIDIAN:3:8"
-        - "OBSIDIAN:3:6"
+        - "OBSIDIAN:1:4"
         - "CRYING_OBSIDIAN:2:5"
-        - "ENDER_PEARL:2:5"
-        - "ENDER_PEARL:2:4"
+        - "ENDER_PEARL:1:3"
         - "BLAZE_POWDER:2:4"
         - "BLAZE_ROD:1:2"
         - "MAGMA_CREAM:2:5"
@@ -409,8 +375,6 @@ item-tier:
         - "MAGMA_CUBE_SPAWN_EGG:1:1"
         - "CREEPER_SPAWN_EGG:1:1"
         - "goblin_compass:1:1"
-        - "OBSIDIAN:3:8"
-        - "OBSIDIAN:3:8"
 
     10:
       tick-start: 14400
@@ -425,10 +389,8 @@ item-tier:
         - "BOOKSHELF:4:8"
         - "EXPERIENCE_BOTTLE:5:12"
         - "LAPIS_LAZULI:8:20"
-        - "OBSIDIAN:4:8"
-        - "OBSIDIAN:3:8"
-        - "ENDER_PEARL:2:5"
-        - "ENDER_PEARL:2:6"
+        - "OBSIDIAN:2:4"
+        - "ENDER_PEARL:1:3"
         - "ENDER_EYE:1:2"
         - "BLAZE_ROD:1:3"
         - "BLAZE_POWDER:2:5"
@@ -451,8 +413,6 @@ item-tier:
         - "WITCH_SPAWN_EGG:1:1"
         - "PIGLIN_SPAWN_EGG:1:1"
         - "sleepy_pillow:1:1"
-        - "OBSIDIAN:4:8"
-        - "OBSIDIAN:4:8"
 
     11:
       tick-start: 17000
@@ -463,11 +423,9 @@ item-tier:
         - "EMERALD:4:9"
         - "GOLD_INGOT:6:14"
         - "GOLD_BLOCK:1:3"
-        - "OBSIDIAN:4:10"
-        - "OBSIDIAN:4:8"
+        - "OBSIDIAN:2:6"
         - "CRYING_OBSIDIAN:2:6"
-        - "ENDER_PEARL:3:6"
-        - "ENDER_PEARL:2:5"
+        - "ENDER_PEARL:1:3"
         - "ENDER_EYE:1:2"
         - "BLAZE_ROD:1:3"
         - "BLAZE_POWDER:2:6"
@@ -493,8 +451,6 @@ item-tier:
         - "ENDERMAN_SPAWN_EGG:1:1"
         - "PHANTOM_SPAWN_EGG:1:1"
         - "golden_carrot_king:1:1"
-        - "OBSIDIAN:4:10"
-        - "OBSIDIAN:4:10"
 
     12:
       tick-start: 19800
@@ -504,11 +460,9 @@ item-tier:
         - "DIAMOND:3:7"
         - "DIAMOND_BLOCK:1:2"
         - "EMERALD:4:10"
-        - "OBSIDIAN:5:12"
-        - "OBSIDIAN:4:10"
+        - "OBSIDIAN:3:7"
         - "CRYING_OBSIDIAN:3:6"
-        - "ENDER_PEARL:3:7"
-        - "ENDER_PEARL:2:6"
+        - "ENDER_PEARL:1:4"
         - "ENDER_EYE:1:3"
         - "BLAZE_ROD:2:4"
         - "GHAST_TEAR:2:4"
@@ -538,10 +492,7 @@ item-tier:
         - "DIAMOND:4:8"
         - "EMERALD:5:12"
         - "EMERALD_BLOCK:1:2"
-        - "OBSIDIAN:6:12"
         - "CRYING_OBSIDIAN:3:8"
-        - "ENDER_PEARL:3:8"
-        - "ENDER_PEARL:3:6"
         - "BLAZE_ROD:2:5"
         - "TNT:4:10"
         - "SHULKER_BOX:1:1"
@@ -560,8 +511,6 @@ item-tier:
         - "GHAST_SPAWN_EGG:1:1"
         - "ENDERMAN_SPAWN_EGG:1:1"
         - "grandma_pan:1:1"
-        - "OBSIDIAN:5:12"
-        - "OBSIDIAN:5:12"
 
     13:
       tick-start: 22800
@@ -571,11 +520,9 @@ item-tier:
         - "DIAMOND:4:10"
         - "DIAMOND_BLOCK:1:3"
         - "EMERALD_BLOCK:1:3"
-        - "OBSIDIAN:6:14"
-        - "OBSIDIAN:5:12"
+        - "OBSIDIAN:3:8"
         - "CRYING_OBSIDIAN:4:8"
-        - "ENDER_PEARL:4:8"
-        - "ENDER_PEARL:3:8"
+        - "ENDER_PEARL:2:4"
         - "ENDER_EYE:1:3"
         - "BLAZE_ROD:2:5"
         - "EXPERIENCE_BOTTLE:8:20"
@@ -605,8 +552,6 @@ item-tier:
         - "NETHERITE_SCRAP:2:5"
         - "NETHERITE_PICKAXE:1:1"
         - "NETHERITE_AXE:1:1"
-        - "OBSIDIAN:8:16"
-        - "ENDER_PEARL:4:10"
         - "ENDER_EYE:2:4"
         - "BLAZE_ROD:3:6"
         - "GHAST_TEAR:2:5"
@@ -626,8 +571,6 @@ item-tier:
         - "void_sword:1:1"
         - "IRON_GOLEM_SPAWN_EGG:1:1"
         - "sleepy_pillow:1:1"
-        - "OBSIDIAN:6:14"
-        - "OBSIDIAN:6:14"
 
     14:
       tick-start: 26000
@@ -642,9 +585,8 @@ item-tier:
         - "NETHERITE_SWORD:1:1"
         - "NETHERITE_HELMET:1:1"
         - "NETHERITE_BOOTS:1:1"
-        - "OBSIDIAN:8:16"
-        - "OBSIDIAN:6:16"
-        - "ENDER_PEARL:4:10"
+        - "OBSIDIAN:4:9"
+        - "ENDER_PEARL:2:6"
         - "ENDER_EYE:2:4"
         - "BLAZE_ROD:3:7"
         - "EXPERIENCE_BOTTLE:12:24"
@@ -672,8 +614,6 @@ item-tier:
         - "NETHERITE_LEGGINGS:1:1"
         - "NETHERITE_AXE:1:1"
         - "TRIDENT:1:1"
-        - "OBSIDIAN:8:18"
-        - "ENDER_PEARL:5:12"
         - "ENDER_EYE:2:5"
         - "BLAZE_ROD:4:8"
         - "END_CRYSTAL:1:3"
@@ -688,8 +628,6 @@ item-tier:
         - "void_sword:1:1"
         - "RAVAGER_SPAWN_EGG:1:1"
         - "grandma_pan:1:1"
-        - "OBSIDIAN:8:16"
-        - "OBSIDIAN:8:16"
 
     15:
       tick-start: 29400
@@ -705,9 +643,8 @@ item-tier:
         - "NETHERITE_SWORD:1:1"
         - "NETHERITE_PICKAXE:1:1"
         - "TRIDENT:1:1"
-        - "OBSIDIAN:8:20"
-        - "OBSIDIAN:8:16"
-        - "ENDER_PEARL:5:12"
+        - "OBSIDIAN:4:12"
+        - "ENDER_PEARL:3:7"
         - "ENDER_EYE:2:5"
         - "END_CRYSTAL:2:4"
         - "FIREWORK_ROCKET:10:20"
@@ -733,9 +670,6 @@ item-tier:
         - "NETHERITE_HELMET:1:1"
         - "NETHERITE_BOOTS:1:1"
         - "ELYTRA:1:1"
-        - "OBSIDIAN:10:20"
-        - "OBSIDIAN:8:18"
-        - "ENDER_PEARL:6:14"
         - "ENDER_EYE:3:6"
         - "FIREWORK_ROCKET:12:24"
         - "WIND_CHARGE:12:24"
@@ -754,8 +688,6 @@ item-tier:
         - "NETHERITE_BLOCK:1:2"
         - "NETHERITE_AXE:1:1"
         - "FIREWORK_ROCKET:16:32"
-        - "OBSIDIAN:10:24"
-        - "ENDER_PEARL:8:16"
         - "ENDER_EYE:3:8"
         - "END_CRYSTAL:2:5"
         - "GOLDEN_APPLE:5:10"
@@ -767,8 +699,6 @@ item-tier:
         - "mega_emerald:4:8"
         - "ENDERMAN_SPAWN_EGG:1:2"
         - "golden_carrot_king:1:1"
-        - "OBSIDIAN:10:20"
-        - "OBSIDIAN:10:20"
 
 # Настройка дополнительного нестандартного дропа с ифритов (Blaze)
 blaze-drop:
@@ -798,8 +728,8 @@ blaze-drop:
     - "sus_cookie:1:2:0.06"
     - "knockback_stick:1:1:0.03"
     # Полезные ресурсы
-    - "OBSIDIAN:1:3:0.15"
-    - "ENDER_PEARL:1:2:0.15"
+    - "OBSIDIAN:1:2:0.08"
+    - "ENDER_PEARL:1:1:0.08"
     - "END_PORTAL_FRAME:1:1:0.01"
     - "NETHERITE_SCRAP:1:2:0.08"
     - "DIAMOND:1:3:0.12"
@@ -823,9 +753,9 @@ chest:
       - "DIAMOND:3:7"
       - "DIAMOND_BLOCK:1:2:0.35"
       - "EMERALD:4:10"
-      - "OBSIDIAN:4:12"
+      - "OBSIDIAN:2:6"
       - "CRYING_OBSIDIAN:2:6"
-      - "ENDER_PEARL:2:6"
+      - "ENDER_PEARL:1:3"
       - "ENDER_EYE:1:3:0.45"
       - "BLAZE_ROD:2:5"
       - "GHAST_TEAR:1:3"
@@ -880,8 +810,8 @@ piglin-barter:
       chance: 0.04 # 4% шанс выпадения
     - item: "ENDER_PEARL"
       min: 1
-      max: 3
-      chance: 0.14 # 14% шанс выпадения
+      max: 2
+      chance: 0.08 # 14% шанс выпадения
     - item: "ENDER_EYE"
       min: 1
       max: 1
@@ -951,8 +881,8 @@ piglin-barter:
     # Полезные ресурсы
     - item: "OBSIDIAN"
       min: 1
-      max: 4
-      chance: 0.16
+      max: 2
+      chance: 0.09
     - item: "CRYING_OBSIDIAN"
       min: 1
       max: 3
