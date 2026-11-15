@@ -1,22 +1,385 @@
-# Настройка выдачи предметов по уровням времени
+# Настройка выдачи предметов по 20 уровням времени
 item-tier:
   levels:
     1:
       tick-start: 0
-      give-tick-delay: 100
-
+      give-tick-delay: 80
       items:
-        - "mega_diamond:1:12"
-        - "STICK:1:12"
+        - "OAK_PLANKS:4:12"
+        - "OAK_PLANKS:4:10"
+        - "COBBLESTONE:4:12"
+        - "COBBLESTONE:4:10"
+        - "DIRT:4:12"
+        - "OAK_LOG:2:6"
+        - "SAND:4:8"
+        - "GRAVEL:3:8"
+        - "STICK:2:6"
+        - "TORCH:2:8"
+        - "LADDER:2:6"
+        - "BREAD:1:3"
+        - "CRAFTING_TABLE:1:1"
+        - "DIAMOND:1:1"
 
     2:
-      tick-start: 400
-      give-tick-delay: 200
-
+      tick-start: 600
+      give-tick-delay: 100
       items:
+        - "OAK_PLANKS:6:14"
+        - "COBBLESTONE:6:16"
+        - "COBBLESTONE:4:12"
+        - "DIRT:4:10"
+        - "OAK_LOG:2:8"
+        - "STONE:4:10"
+        - "GLASS:4:10"
+        - "TORCH:4:10"
+        - "COAL:2:6"
+        - "FURNACE:1:1"
+        - "BREAD:2:4"
+        - "STONE_PICKAXE:1:1"
+        - "IRON_INGOT:1:2"
+        - "ENDER_PEARL:1:1"
+
+    3:
+      tick-start: 1400
+      give-tick-delay: 110
+      items:
+        - "OAK_PLANKS:6:16"
+        - "COBBLESTONE:6:16"
+        - "STONE_BRICKS:4:12"
+        - "DEEPSLATE:4:12"
+        - "OAK_LOG:3:8"
+        - "GLASS:4:12"
+        - "COAL:3:8"
+        - "RAW_IRON:2:5"
+        - "COPPER_INGOT:3:8"
+        - "STICK:4:10"
+        - "COOKED_BEEF:2:4"
+        - "BUCKET:1:1"
+        - "GOLD_INGOT:1:3"
+        - "DIAMOND:1:1"
+
+    4:
+      tick-start: 2400
+      give-tick-delay: 120
+      items:
+        - "COBBLESTONE:8:16"
+        - "STONE_BRICKS:6:14"
+        - "OAK_PLANKS:8:16"
+        - "OAK_LOG:4:10"
+        - "COAL:4:10"
+        - "RAW_IRON:2:6"
+        - "IRON_INGOT:1:4"
+        - "ARROW:4:12"
+        - "BOW:1:1"
+        - "SHIELD:1:1"
+        - "WATER_BUCKET:1:1"
+        - "COOKED_BEEF:2:5"
+        - "GOLDEN_APPLE:1:1"
+        - "mega_emerald:1:1"
+
+    5:
+      tick-start: 3600
+      give-tick-delay: 140
+      items:
+        - "STONE_BRICKS:6:16"
+        - "OAK_PLANKS:6:16"
+        - "COBBLESTONE:6:14"
+        - "IRON_INGOT:2:5"
+        - "IRON_INGOT:2:4"
+        - "GOLD_INGOT:2:5"
+        - "REDSTONE:4:10"
+        - "LAPIS_LAZULI:4:10"
+        - "COAL:4:10"
+        - "IRON_PICKAXE:1:1"
+        - "IRON_SWORD:1:1"
+        - "ARROW:6:14"
+        - "COOKED_BEEF:3:6"
+        - "DIAMOND:1:2"
+
+    6:
+      tick-start: 5000
+      give-tick-delay: 160
+      items:
+        - "COBBLESTONE:6:16"
+        - "IRON_INGOT:2:6"
+        - "IRON_INGOT:3:6"
+        - "GOLD_INGOT:2:6"
+        - "REDSTONE:4:12"
+        - "LAPIS_LAZULI:4:12"
+        - "IRON_HELMET:1:1"
+        - "IRON_BOOTS:1:1"
+        - "IRON_AXE:1:1"
+        - "LAVA_BUCKET:1:1"
+        - "WATER_BUCKET:1:1"
+        - "FLINT_AND_STEEL:1:1"
+        - "OBSIDIAN:1:3"
+        - "mega_diamond:1:1"
+
+    7:
+      tick-start: 6600
+      give-tick-delay: 180
+      items:
+        - "OAK_PLANKS:6:14"
+        - "IRON_INGOT:3:7"
+        - "GOLD_INGOT:3:7"
+        - "EMERALD:1:4"
+        - "REDSTONE:6:14"
+        - "LAPIS_LAZULI:6:14"
+        - "IRON_CHESTPLATE:1:1"
+        - "IRON_LEGGINGS:1:1"
+        - "CROSSBOW:1:1"
+        - "ARROW:8:16"
+        - "GOLDEN_CARROT:2:5"
+        - "ENDER_PEARL:1:2"
+        - "DIAMOND:1:2"
+        - "GOLDEN_APPLE:1:1"
+
+    8:
+      tick-start: 8400
+      give-tick-delay: 200
+      items:
+        - "DIRT:4:8"
+        - "IRON_INGOT:4:8"
+        - "GOLD_INGOT:3:8"
+        - "EMERALD:2:5"
+        - "DIAMOND:1:3"
+        - "OBSIDIAN:2:4"
+        - "EXPERIENCE_BOTTLE:2:6"
+        - "BOOKSHELF:2:4"
+        - "ANVIL:1:1"
+        - "BOW:1:1"
+        - "SPECTRAL_ARROW:4:10"
+        - "GOLDEN_CARROT:3:6"
+        - "GOLDEN_APPLE:1:2"
+        - "mega_emerald:1:2"
+
+    9:
+      tick-start: 10400
+      give-tick-delay: 220
+      items:
+        - "COBBLESTONE:4:10"
+        - "IRON_INGOT:4:10"
+        - "GOLD_INGOT:4:8"
+        - "DIAMOND:1:3"
+        - "DIAMOND:2:3"
+        - "EMERALD:2:6"
+        - "EXPERIENCE_BOTTLE:3:8"
+        - "OBSIDIAN:2:6"
+        - "ENDER_PEARL:1:3"
+        - "BLAZE_POWDER:1:3"
+        - "DIAMOND_PICKAXE:1:1"
+        - "GOLDEN_APPLE:1:2"
+        - "mega_diamond:1:1"
+        - "NETHERITE_SCRAP:1:1"
+
+    10:
+      tick-start: 12600
+      give-tick-delay: 240
+      items:
+        - "STICK:4:8"
+        - "IRON_INGOT:4:10"
+        - "GOLD_INGOT:4:10"
+        - "DIAMOND:2:4"
+        - "EMERALD:3:7"
+        - "ENCHANTING_TABLE:1:1"
+        - "BOOKSHELF:3:6"
+        - "EXPERIENCE_BOTTLE:4:10"
+        - "OBSIDIAN:3:6"
+        - "ENDER_PEARL:2:4"
+        - "DIAMOND_SWORD:1:1"
+        - "GOLDEN_APPLE:1:2"
+        - "mega_emerald:1:2"
+        - "NETHERITE_SCRAP:1:2"
+
+    11:
+      tick-start: 15000
+      give-tick-delay: 260
+      items:
+        - "OAK_PLANKS:4:8"
+        - "DIAMOND:2:5"
+        - "EMERALD:3:8"
+        - "GOLD_INGOT:5:12"
+        - "OBSIDIAN:4:8"
+        - "CRYING_OBSIDIAN:2:5"
+        - "ENDER_PEARL:2:4"
+        - "BLAZE_POWDER:2:4"
+        - "EXPERIENCE_BOTTLE:4:12"
+        - "DIAMOND_HELMET:1:1"
+        - "DIAMOND_BOOTS:1:1"
+        - "GOLDEN_APPLE:1:3"
+        - "mega_diamond:1:2"
+        - "NETHERITE_SCRAP:1:2"
+
+    12:
+      tick-start: 17600
+      give-tick-delay: 280
+      items:
+        - "COBBLESTONE:4:8"
+        - "DIAMOND:3:6"
+        - "EMERALD:4:10"
+        - "OBSIDIAN:4:8"
+        - "ENDER_PEARL:2:5"
+        - "BLAZE_ROD:1:3"
+        - "EXPERIENCE_BOTTLE:6:14"
+        - "DIAMOND_LEGGINGS:1:1"
+        - "DIAMOND_CHESTPLATE:1:1"
+        - "DIAMOND_AXE:1:1"
+        - "GOLDEN_APPLE:2:3"
+        - "mega_diamond:1:2"
+        - "NETHERITE_SCRAP:1:2"
         - "void_sword:1:1"
-        - "mega_emerald:1:12"
-        - "OAK_SLAB:1:12"
+
+    13:
+      tick-start: 20400
+      give-tick-delay: 300
+      items:
+        - "DIRT:2:6"
+        - "DIAMOND:3:7"
+        - "DIAMOND_BLOCK:1:2"
+        - "EMERALD:4:10"
+        - "OBSIDIAN:4:10"
+        - "CRYING_OBSIDIAN:3:6"
+        - "ENDER_PEARL:2:5"
+        - "BLAZE_ROD:2:4"
+        - "GHAST_TEAR:1:3"
+        - "TNT:2:6"
+        - "GOLDEN_APPLE:2:4"
+        - "NETHERITE_SCRAP:1:3"
+        - "mega_emerald:1:3"
+        - "mega_diamond:1:2"
+
+    14:
+      tick-start: 23400
+      give-tick-delay: 320
+      items:
+        - "TORCH:4:8"
+        - "DIAMOND:4:8"
+        - "DIAMOND_BLOCK:1:2"
+        - "EMERALD_BLOCK:1:2"
+        - "OBSIDIAN:6:12"
+        - "ENDER_PEARL:3:6"
+        - "BLAZE_ROD:2:5"
+        - "EXPERIENCE_BOTTLE:8:16"
+        - "DIAMOND_CHESTPLATE:1:1"
+        - "DIAMOND_SWORD:1:1"
+        - "GOLDEN_APPLE:2:4"
+        - "NETHERITE_SCRAP:2:4"
+        - "NETHERITE_INGOT:1:1"
+        - "mega_diamond:1:3"
+
+    15:
+      tick-start: 26600
+      give-tick-delay: 340
+      items:
+        - "COBBLESTONE:4:8"
+        - "DIAMOND_BLOCK:1:3"
+        - "EMERALD_BLOCK:1:3"
+        - "NETHERITE_SCRAP:2:4"
+        - "NETHERITE_INGOT:1:2"
+        - "OBSIDIAN:6:12"
+        - "ENDER_PEARL:3:6"
+        - "ENDER_EYE:1:2"
+        - "BLAZE_ROD:2:5"
+        - "TNT:4:8"
+        - "GOLDEN_APPLE:2:5"
+        - "TOTEM_OF_UNDYING:1:1"
+        - "mega_diamond:2:3"
+        - "void_sword:1:1"
+
+    16:
+      tick-start: 30000
+      give-tick-delay: 360
+      items:
+        - "OAK_PLANKS:4:8"
+        - "DIAMOND_BLOCK:1:3"
+        - "EMERALD_BLOCK:1:3"
+        - "NETHERITE_INGOT:1:2"
+        - "NETHERITE_PICKAXE:1:1"
+        - "NETHERITE_SWORD:1:1"
+        - "ENDER_PEARL:3:8"
+        - "ENDER_EYE:1:3"
+        - "EXPERIENCE_BOTTLE:10:20"
+        - "GOLDEN_APPLE:3:5"
+        - "ENCHANTED_GOLDEN_APPLE:1:1"
+        - "TOTEM_OF_UNDYING:1:1"
+        - "mega_emerald:2:4"
+        - "mega_diamond:2:4"
+
+    17:
+      tick-start: 33600
+      give-tick-delay: 380
+      items:
+        - "STICK:2:6"
+        - "DIAMOND_BLOCK:2:4"
+        - "NETHERITE_INGOT:1:3"
+        - "NETHERITE_HELMET:1:1"
+        - "NETHERITE_BOOTS:1:1"
+        - "NETHERITE_AXE:1:1"
+        - "TRIDENT:1:1"
+        - "ENDER_PEARL:4:8"
+        - "ENDER_EYE:1:3"
+        - "GOLDEN_APPLE:3:6"
+        - "ENCHANTED_GOLDEN_APPLE:1:1"
+        - "TOTEM_OF_UNDYING:1:1"
+        - "mega_diamond:2:4"
+        - "void_sword:1:1"
+
+    18:
+      tick-start: 37400
+      give-tick-delay: 400
+      items:
+        - "DIRT:2:6"
+        - "DIAMOND_BLOCK:2:5"
+        - "EMERALD_BLOCK:2:5"
+        - "NETHERITE_INGOT:2:3"
+        - "NETHERITE_LEGGINGS:1:1"
+        - "NETHERITE_CHESTPLATE:1:1"
+        - "TRIDENT:1:1"
+        - "FIREWORK_ROCKET:8:16"
+        - "ENDER_PEARL:4:10"
+        - "ENDER_EYE:2:4"
+        - "ENCHANTED_GOLDEN_APPLE:1:1"
+        - "TOTEM_OF_UNDYING:1:1"
+        - "mega_diamond:2:5"
+        - "void_sword:1:1"
+
+    19:
+      tick-start: 41400
+      give-tick-delay: 440
+      items:
+        - "COBBLESTONE:2:6"
+        - "NETHERITE_INGOT:2:4"
+        - "NETHERITE_SWORD:1:1"
+        - "NETHERITE_CHESTPLATE:1:1"
+        - "NETHERITE_LEGGINGS:1:1"
+        - "NETHERITE_HELMET:1:1"
+        - "NETHERITE_BOOTS:1:1"
+        - "FIREWORK_ROCKET:8:20"
+        - "ENDER_EYE:2:5"
+        - "GOLDEN_APPLE:4:8"
+        - "ENCHANTED_GOLDEN_APPLE:1:2"
+        - "TOTEM_OF_UNDYING:1:1"
+        - "mega_diamond:3:5"
+        - "void_sword:1:1"
+
+    20:
+      tick-start: 46000
+      give-tick-delay: 480
+      items:
+        - "OAK_PLANKS:2:6"
+        - "NETHERITE_INGOT:2:5"
+        - "NETHERITE_SWORD:1:1"
+        - "NETHERITE_PICKAXE:1:1"
+        - "NETHERITE_CHESTPLATE:1:1"
+        - "ELYTRA:1:1"
+        - "FIREWORK_ROCKET:12:24"
+        - "TRIDENT:1:1"
+        - "ENDER_EYE:2:6"
+        - "ENCHANTED_GOLDEN_APPLE:1:2"
+        - "TOTEM_OF_UNDYING:1:2"
+        - "mega_diamond:3:6"
+        - "mega_emerald:3:6"
+        - "void_sword:1:1"
 
 # Настройка дополнительного нестандартного дропа с ифритов (Blaze)
 blaze-drop:
