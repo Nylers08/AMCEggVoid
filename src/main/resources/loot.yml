@@ -814,17 +814,58 @@ blaze-drop:
 # Настройка лута в сундуках по мирам (nether, в будущем end и др.)
 chest:
   nether:
-    min-items: 2 # Мин. кол-во слотов с лутом в одном сундуке
-    max-items: 5 # Макс. кол-во слотов с лутом в одном сундуке
+    min-items: 4 # Мин. кол-во слотов с лутом в одном сундуке
+    max-items: 7 # Макс. кол-во слотов с лутом в одном сундуке
     # Список лута: уникальные предметы из unique_items.yml и материалы Minecraft
     # Формат: "ID:min:max" или "ID:min:max:шанс"
     loot:
-      - "mega_diamond:1:2"
-      - "void_sword:1:1:0.2"
-      - "mega_emerald:1:3"
-      - "GOLDEN_APPLE:1:4"
-      - "NETHERITE_SCRAP:1:2"
-      - "OBSIDIAN:2:6"
+      # Ресурсы и ключевые предметы (уровень 11-13 тира)
+      - "DIAMOND:3:7"
+      - "DIAMOND_BLOCK:1:2:0.35"
+      - "EMERALD:4:10"
+      - "OBSIDIAN:4:12"
+      - "CRYING_OBSIDIAN:2:6"
+      - "ENDER_PEARL:2:6"
+      - "ENDER_EYE:1:3:0.45"
+      - "BLAZE_ROD:2:5"
+      - "GHAST_TEAR:1:3"
+      - "NETHERITE_SCRAP:1:3:0.5"
+      - "NETHERITE_INGOT:1:2:0.25"
+      - "EXPERIENCE_BOTTLE:6:16"
+      - "GOLDEN_APPLE:2:5"
+      - "ENCHANTED_GOLDEN_APPLE:1:1:0.15"
+      - "TOTEM_OF_UNDYING:1:1:0.15"
+      - "SHULKER_BOX:1:1:0.25"
+      - "TNT:3:8"
+      - "FIREWORK_ROCKET:6:16"
+      - "WIND_CHARGE:6:16"
+      # Экипировка 11-13 тира
+      - "DIAMOND_HELMET:1:1:0.35"
+      - "DIAMOND_CHESTPLATE:1:1:0.30"
+      - "DIAMOND_LEGGINGS:1:1:0.30"
+      - "DIAMOND_BOOTS:1:1:0.35"
+      - "DIAMOND_SWORD:1:1:0.35"
+      - "DIAMOND_PICKAXE:1:1:0.35"
+      - "DIAMOND_AXE:1:1:0.35"
+      # Уникальные и мемные предметы
+      - "mega_diamond:1:3:0.5"
+      - "mega_emerald:1:3:0.5"
+      - "void_sword:1:1:0.15"
+      - "void_helmet:1:1:0.15"
+      - "void_chestplate:1:1:0.12"
+      - "void_leggings:1:1:0.12"
+      - "void_boots:1:1:0.15"
+      - "void_bow:1:1:0.18"
+      - "void_pickaxe:1:1:0.15"
+      - "sniper_crossbow:1:1:0.20"
+      - "sky_axe:1:1:0.20"
+      - "bounce_boots:1:1:0.25"
+      - "gigachad_hoe:1:1:0.15"
+      - "admin_slipper:1:1:0.15"
+      - "knockback_stick:1:1:0.20"
+      - "uzbek_bread:1:2:0.25"
+      - "lucky_fish:1:1:0.20"
+      - "cursed_potato:1:2:0.25"
 
 # Настройка уникального лута при торгах с пиглинами (Piglin Bartering)
 piglin-barter:
