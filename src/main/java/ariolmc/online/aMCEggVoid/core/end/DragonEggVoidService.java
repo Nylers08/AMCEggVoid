@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.end;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -50,6 +51,9 @@ public class DragonEggVoidService implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onDragonEggItemVoidDamage(EntityDamageEvent event) {
+        if (!EventState.isRunning()) {
+            return;
+        }
         if (event.getCause() != EntityDamageEvent.DamageCause.VOID) {
             return;
         }
@@ -66,6 +70,9 @@ public class DragonEggVoidService implements Listener {
     }
 
     private void scanVoidEggs() {
+        if (!EventState.isRunning()) {
+            return;
+        }
         for (World world : Bukkit.getWorlds()) {
             int minY = world.getMinHeight();
             for (Entity entity : world.getEntities()) {

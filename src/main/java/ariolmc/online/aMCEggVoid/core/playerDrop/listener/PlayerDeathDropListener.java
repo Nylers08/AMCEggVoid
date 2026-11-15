@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.playerDrop.listener;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.playerDrop.MainMaterialList;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,6 +20,9 @@ public class PlayerDeathDropListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
+        if (!EventState.isRunning()) {
+            return;
+        }
         List<ItemStack> drops = event.getDrops();
         List<ItemStack> itemsToKeep = event.getItemsToKeep();
 

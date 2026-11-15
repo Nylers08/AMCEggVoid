@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropModule;
 import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
@@ -57,6 +58,7 @@ public final class AMCEggVoid extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        EventState.stop();
         saveDefaultConfig();
         saveResource("unique_items.yml", false);
         saveResource("loot.yml", false);
@@ -85,6 +87,7 @@ public final class AMCEggVoid extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        EventState.stop();
         if (itemGiverModule != null) {
             itemGiverModule.getItemGiver().stopGiveCycle();
         }

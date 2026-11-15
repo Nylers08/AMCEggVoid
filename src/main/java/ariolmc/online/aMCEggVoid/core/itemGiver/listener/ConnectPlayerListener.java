@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.itemGiver.listener;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,9 @@ public class ConnectPlayerListener implements Listener {
 
     @EventHandler
     public void joinPlayer(PlayerJoinEvent event){
+        if(!EventState.isRunning()){
+            return;
+        }
         String playerName = event.getPlayer().getName();
         if(memberList.contains(playerName)){
             itemGiverModule.getGiverBossBar().addPlayer(playerName);

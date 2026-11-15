@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.blazeDrop.listener;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropCfg;
 import org.bukkit.entity.Blaze;
 import org.bukkit.entity.EntityType;
@@ -20,6 +21,9 @@ public class BlazeDeathListener implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+        if (!EventState.isRunning()) {
+            return;
+        }
         if (event.getEntityType() != EntityType.BLAZE && !(event.getEntity() instanceof Blaze)) {
             return;
         }

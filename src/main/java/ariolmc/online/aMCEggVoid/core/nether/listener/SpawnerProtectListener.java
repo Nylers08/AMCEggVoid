@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.nether.listener;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
@@ -15,6 +16,9 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 public class SpawnerProtectListener implements Listener {
 
     private boolean isProtectedSpawner(Block block) {
+        if (!EventState.isRunning()) {
+            return false;
+        }
         if (block == null || block.getType() != Material.SPAWNER) {
             return false;
         }

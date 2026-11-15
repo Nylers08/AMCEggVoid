@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.piglinBarter.listener;
 
+import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.piglinBarter.PiglinBarterCfg;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,9 @@ public class PiglinBarterListener implements Listener {
 
     @EventHandler
     public void onPiglinBarter(PiglinBarterEvent event) {
+        if (!EventState.isRunning()) {
+            return;
+        }
         if (!cfg.isEnabled()) {
             return;
         }

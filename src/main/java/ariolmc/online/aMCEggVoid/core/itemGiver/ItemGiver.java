@@ -1,6 +1,7 @@
 package ariolmc.online.aMCEggVoid.core.itemGiver;
 
 import ariolmc.online.aMCEggVoid.AMCEggVoid;
+import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.cfg.ItemGiverCfg;
 import lombok.Getter;
@@ -41,6 +42,7 @@ public class ItemGiver {
 
     public void startGiveCycle(){
         hasStartCycle = true;
+        EventState.start();
         updateLevel();
         if(currentLevel == null){
             return;
@@ -53,6 +55,7 @@ public class ItemGiver {
 
     public void stopGiveCycle(){
         hasStartCycle = false;
+        EventState.stop();
         currentTick = 0;
         if(currentRun != null){
             currentRun.cancel();
