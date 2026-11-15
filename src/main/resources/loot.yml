@@ -3,7 +3,7 @@ item-tier:
   levels:
     1:
       tick-start: 0
-      give-tick-delay: 160
+      give-tick-delay: 200
       items:
         - "OAK_PLANKS:6:16"
         - "OAK_PLANKS:4:12"
@@ -50,7 +50,7 @@ item-tier:
 
     2:
       tick-start: 800
-      give-tick-delay: 180
+      give-tick-delay: 225
       items:
         - "OAK_PLANKS:8:18"
         - "SPRUCE_PLANKS:6:16"
@@ -94,7 +94,7 @@ item-tier:
 
     3:
       tick-start: 1800
-      give-tick-delay: 200
+      give-tick-delay: 250
       items:
         - "OAK_PLANKS:8:20"
         - "DARK_OAK_PLANKS:8:20"
@@ -138,7 +138,7 @@ item-tier:
 
     4:
       tick-start: 3000
-      give-tick-delay: 220
+      give-tick-delay: 275
       items:
         - "COBBLESTONE:8:20"
         - "STONE_BRICKS:8:18"
@@ -179,7 +179,7 @@ item-tier:
 
     5:
       tick-start: 4400
-      give-tick-delay: 240
+      give-tick-delay: 300
       items:
         - "STONE_BRICKS:8:18"
         - "OAK_PLANKS:8:18"
@@ -220,7 +220,7 @@ item-tier:
 
     6:
       tick-start: 6000
-      give-tick-delay: 280
+      give-tick-delay: 350
       items:
         - "COBBLESTONE:8:16"
         - "BLACKSTONE:6:16"
@@ -258,10 +258,15 @@ item-tier:
         - "WOLF_SPAWN_EGG:1:1"
         - "NAME_TAG:1:2"
         - "golden_carrot_king:1:1"
+        - "COBBLESTONE:10:20"
+        - "STONE_BRICKS:8:18"
+        - "OAK_PLANKS:10:20"
+        - "DEEPSLATE_BRICKS:8:16"
+        - "GLASS:8:16"
 
     7:
       tick-start: 7800
-      give-tick-delay: 300
+      give-tick-delay: 375
       items:
         - "OAK_PLANKS:6:16"
         - "END_STONE:4:12"
@@ -298,10 +303,15 @@ item-tier:
         - "ZOMBIE_SPAWN_EGG:1:1"
         - "VILLAGER_SPAWN_EGG:1:1"
         - "sleepy_pillow:1:1"
+        - "COBBLESTONE:10:20"
+        - "STONE_BRICKS:8:18"
+        - "OAK_PLANKS:10:20"
+        - "DEEPSLATE_BRICKS:8:16"
+        - "GLASS:8:16"
 
     8:
       tick-start: 9800
-      give-tick-delay: 350
+      give-tick-delay: 440
       items:
         - "DIRT:4:10"
         - "IRON_INGOT:4:10"
@@ -337,10 +347,15 @@ item-tier:
         - "VILLAGER_SPAWN_EGG:1:1"
         - "SLIME_SPAWN_EGG:1:1"
         - "grandma_pan:1:1"
+        - "COBBLESTONE:10:20"
+        - "STONE_BRICKS:8:18"
+        - "OAK_PLANKS:10:20"
+        - "DEEPSLATE_BRICKS:8:16"
+        - "GLASS:8:16"
 
     9:
       tick-start: 12000
-      give-tick-delay: 350
+      give-tick-delay: 440
       items:
         - "COBBLESTONE:4:12"
         - "IRON_INGOT:5:12"
@@ -375,10 +390,15 @@ item-tier:
         - "MAGMA_CUBE_SPAWN_EGG:1:1"
         - "CREEPER_SPAWN_EGG:1:1"
         - "goblin_compass:1:1"
+        - "COBBLESTONE:10:20"
+        - "STONE_BRICKS:8:18"
+        - "OAK_PLANKS:10:20"
+        - "DEEPSLATE_BRICKS:8:16"
+        - "GLASS:8:16"
 
     10:
       tick-start: 14400
-      give-tick-delay: 400
+      give-tick-delay: 500
       items:
         - "STICK:4:10"
         - "IRON_INGOT:5:12"
@@ -413,10 +433,15 @@ item-tier:
         - "WITCH_SPAWN_EGG:1:1"
         - "PIGLIN_SPAWN_EGG:1:1"
         - "sleepy_pillow:1:1"
+        - "COBBLESTONE:10:20"
+        - "STONE_BRICKS:8:18"
+        - "OAK_PLANKS:10:20"
+        - "DEEPSLATE_BRICKS:8:16"
+        - "GLASS:8:16"
 
     11:
       tick-start: 17000
-      give-tick-delay: 420
+      give-tick-delay: 525
       items:
         - "OAK_PLANKS:4:10"
         - "DIAMOND:3:6"
@@ -451,10 +476,17 @@ item-tier:
         - "ENDERMAN_SPAWN_EGG:1:1"
         - "PHANTOM_SPAWN_EGG:1:1"
         - "golden_carrot_king:1:1"
+        - "COBBLESTONE:12:24"
+        - "STONE_BRICKS:10:22"
+        - "OAK_PLANKS:12:24"
+        - "END_STONE:8:18"
+        - "PURPUR_BLOCK:8:18"
+        - "QUARTZ_BLOCK:8:16"
+        - "BLACKSTONE:10:20"
 
     12:
       tick-start: 19800
-      give-tick-delay: 440
+      give-tick-delay: 550
       items:
         - "COBBLESTONE:4:10"
         - "DIAMOND:3:7"
@@ -511,10 +543,17 @@ item-tier:
         - "GHAST_SPAWN_EGG:1:1"
         - "ENDERMAN_SPAWN_EGG:1:1"
         - "grandma_pan:1:1"
+        - "COBBLESTONE:12:24"
+        - "STONE_BRICKS:10:22"
+        - "OAK_PLANKS:12:24"
+        - "END_STONE:8:18"
+        - "PURPUR_BLOCK:8:18"
+        - "QUARTZ_BLOCK:8:16"
+        - "BLACKSTONE:10:20"
 
     13:
       tick-start: 22800
-      give-tick-delay: 480
+      give-tick-delay: 600
       items:
         - "TORCH:4:10"
         - "DIAMOND:4:10"
@@ -571,10 +610,17 @@ item-tier:
         - "void_sword:1:1"
         - "IRON_GOLEM_SPAWN_EGG:1:1"
         - "sleepy_pillow:1:1"
+        - "COBBLESTONE:12:24"
+        - "STONE_BRICKS:10:22"
+        - "OAK_PLANKS:12:24"
+        - "END_STONE:8:18"
+        - "PURPUR_BLOCK:8:18"
+        - "QUARTZ_BLOCK:8:16"
+        - "BLACKSTONE:10:20"
 
     14:
       tick-start: 26000
-      give-tick-delay: 520
+      give-tick-delay: 650
       items:
         - "OAK_PLANKS:4:10"
         - "DIAMOND_BLOCK:2:4"
@@ -628,10 +674,17 @@ item-tier:
         - "void_sword:1:1"
         - "RAVAGER_SPAWN_EGG:1:1"
         - "grandma_pan:1:1"
+        - "COBBLESTONE:12:24"
+        - "STONE_BRICKS:10:22"
+        - "OAK_PLANKS:12:24"
+        - "END_STONE:8:18"
+        - "PURPUR_BLOCK:8:18"
+        - "QUARTZ_BLOCK:8:16"
+        - "BLACKSTONE:10:20"
 
     15:
       tick-start: 29400
-      give-tick-delay: 580
+      give-tick-delay: 725
       items:
         - "DIRT:2:8"
         - "DIAMOND_BLOCK:2:5"
@@ -699,6 +752,13 @@ item-tier:
         - "mega_emerald:4:8"
         - "ENDERMAN_SPAWN_EGG:1:2"
         - "golden_carrot_king:1:1"
+        - "COBBLESTONE:12:24"
+        - "STONE_BRICKS:10:22"
+        - "OAK_PLANKS:12:24"
+        - "END_STONE:8:18"
+        - "PURPUR_BLOCK:8:18"
+        - "QUARTZ_BLOCK:8:16"
+        - "BLACKSTONE:10:20"
 
 # Настройка дополнительного нестандартного дропа с ифритов (Blaze)
 blaze-drop:
