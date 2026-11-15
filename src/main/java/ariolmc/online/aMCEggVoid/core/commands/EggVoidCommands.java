@@ -7,6 +7,7 @@ import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.nether.NetherModule;
 import ariolmc.online.aMCEggVoid.core.piglinBarter.PiglinBarterModule;
 import ariolmc.online.aMCEggVoid.core.playerDrop.PlayerDropModule;
+import ariolmc.online.aMCEggVoid.core.trader.TraderModule;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,23 +26,29 @@ public class EggVoidCommands implements CommandExecutor {
     private final NetherModule netherModule;
     private final BlazeDropModule blazeDropModule;
     private final PiglinBarterModule piglinBarterModule;
+    private final TraderModule traderModule;
     private final Map<String, Subcommand> subcommandMap = new HashMap<>();
 
     public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule) {
-        this(memberList, itemGiverModule, playerDropModule, netherModule, null, null);
+        this(memberList, itemGiverModule, playerDropModule, netherModule, null, null, null);
     }
 
     public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule) {
-        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, null);
+        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, null, null);
     }
 
     public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule, PiglinBarterModule piglinBarterModule) {
+        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, null);
+    }
+
+    public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule, PiglinBarterModule piglinBarterModule, TraderModule traderModule) {
         this.memberList = memberList;
         this.itemGiver = itemGiverModule;
         this.playerDropModule = playerDropModule;
         this.netherModule = netherModule;
         this.blazeDropModule = blazeDropModule;
         this.piglinBarterModule = piglinBarterModule;
+        this.traderModule = traderModule;
 
         initSubcommand();
     }
@@ -49,10 +56,11 @@ public class EggVoidCommands implements CommandExecutor {
     private void initSubcommand() {
         addSubCommand(new StartCommand(itemGiver.getItemGiver()), "start");
         addSubCommand(new StopCommand(itemGiver.getItemGiver()), "stop");
-        addSubCommand(new ReloadCommand(memberList, itemGiver, playerDropModule, netherModule, blazeDropModule, piglinBarterModule), "reload");
+        addSubCommand(new ReloadCommand(memberList, itemGiver, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, traderModule), "reload");
         addSubCommand(new AddMemberCommand(memberList, itemGiver.getGiverBossBar()), "addmember");
         addSubCommand(new RemoveMemberCommand(memberList, itemGiver.getGiverBossBar()), "removemember");
         addSubCommand(new NetherGenCommand(netherModule), "nethergen", "gennether");
+        addSubCommand(new TraderCommand(traderModule), "trader");
     }
 
     public void addSubCommand(Subcommand command, String... aliases) {
@@ -94,7 +102,7 @@ public class EggVoidCommands implements CommandExecutor {
     }
 
     public void actionWithoutSubcommand(CommandSender sender, String[] args) {
-        sender.sendMessage("§6AMCEggVoid | §fДоступные команды: §e/eggvoid <start|stop|reload|addmember|removemember|nethergen>");
+        sender.sendMessage("§6AMCEggVoid | §fДоступные команды: §e/eggvoid <start|stop|reload|addmember|removemember|nethergen|trader>");
     }
 
     public void actionUnknownSubcommand(String alias, CommandSender sender, String[] args) {

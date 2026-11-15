@@ -45,3 +45,22 @@ nether:
     enabled: true
     min-chests: 8 # Мин. кол-во сундуков при генерации Незера
     max-chests: 15 # Макс. кол-во сундуков при генерации Незера
+
+# Настройка жителя-торговца (/eggvoid trader)
+trader:
+  name: "§6§lТорговец Бездны"
+  profession: "CLERIC" # Профессия жителя (CLERIC, FARMER, LIBRARIAN, ARMORER и т.д.)
+  invulnerable: true
+  # Список торгов: поддерживаются уникальные предметы из unique_items.yml и стандартные материалы Minecraft.
+  # Формат: "ID:кол-во" или объект { item: "ID", amount: N }
+  trades:
+    - buy: "mega_diamond:2"
+      sell: "void_sword:1"
+      max-uses: 999
+    - buy: "EMERALD:16"
+      sell: "mega_diamond:1"
+      max-uses: 999
+    - buy: "NETHERITE_SCRAP:4"
+      buy2: "mega_emerald:2"
+      sell: "GOLDEN_APPLE:3"
+      max-uses: 999
