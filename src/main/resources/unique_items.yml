@@ -2,8 +2,6 @@ items:
   mega_diamond:
     name: "§6Мега алмаз"
     material: "DIAMOND"
-    min: 1
-    max: 12
     lore:
       - "§7Его ебали"
       - "§75 узбеков"
@@ -13,8 +11,6 @@ items:
   void_sword:
     name: "§cКлинок Бездны"
     material: "NETHERITE_SWORD"
-    min: 1
-    max: 1
     lore:
       - "§7Закалён в пустоте EggVoid"
     enchantments:
@@ -26,7 +22,5 @@ items:
   mega_emerald:
     name: "§aМега изюм"
     material: "EMERALD"
-    min: 1
-    max: 12
     lore:
       - "§75 узбеков"

@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LevelItemTierCfg {
 
@@ -48,17 +49,33 @@ public class LevelItemTierCfg {
     private List<RewardItem> loadItems(ConfigurationSection levelSection) {
         List<RewardItem> items = new ArrayList<>();
 
-        // Формат 1: items как список строк
+        // Формат 1: items как список строк или объектов
         // items:
-        //   - "mega_diamond"
-        //   - "DIAMOND:1:12"
-        //   - "STICK"
+        //   - "mega_diamond:1:12"
+        //   - "STICK:1:12"
+        // или
+        // items:
+        //   - item: mega_diamond
+        //     min: 1
+        //     max: 12
         if (levelSection.isList("items")) {
-            List<String> idList = levelSection.getStringList("items");
-            for (String raw : idList) {
-                RewardItem item = resolveItem(raw, null, null);
-                if (item != null) {
-                    items.add(item);
+            for (Object obj : levelSection.getList("items")) {
+                if (obj instanceof String raw) {
+                    RewardItem item = resolveItem(raw, null, null);
+                    if (item != null) {
+                        items.add(item);
+                    }
+                } else if (obj instanceof Map<?, ?> map) {
+                    Object itemObj = map.get("item") != null ? map.get("item") : (map.get("material") != null ? map.get("material") : map.get("id"));
+                    if (itemObj != null) {
+                        String identifier = itemObj.toString();
+                        Integer min = map.get("min") instanceof Number n ? n.intValue() : null;
+                        Integer max = map.get("max") instanceof Number n ? n.intValue() : null;
+                        RewardItem item = resolveItem(identifier, min, max);
+                        if (item != null) {
+                            items.add(item);
+                        }
+                    }
                 }
             }
             return items;
@@ -71,7 +88,7 @@ public class LevelItemTierCfg {
         }
 
         for (String key : itemsSection.getKeys(false)) {
-            // item1: "mega_diamond" или item1: "DIAMOND:1:10"
+            // item1: "mega_diamond:1:12"
             if (itemsSection.isString(key)) {
                 String raw = itemsSection.getString(key);
                 RewardItem item = resolveItem(raw, null, null);
@@ -100,6 +117,7 @@ public class LevelItemTierCfg {
 
     /**
      * Преобразует строковый идентификатор (уникальный предмет или ванильный материал) в RewardItem.
+     * Кол-во (min, max) настраивается исключительно в главном конфиге config.yml.
      * Поддерживает синтаксис: "IDENTIFIER", "IDENTIFIER:min:max", "IDENTIFIER:amount"
      */
     public RewardItem resolveItem(String rawIdentifier, Integer overrideMin, Integer overrideMax) {
@@ -128,13 +146,14 @@ public class LevelItemTierCfg {
             }
         }
 
+        if (max < min) {
+            max = min;
+        }
+
         // 1. Сначала ищем среди уникальных предметов unique_items.yml
-        RewardItem unique = uniqueItemsCfg.getItem(id);
-        if (unique != null) {
-            int finalMin = overrideMin != null ? overrideMin : (rawIdentifier.contains(":") ? min : unique.minAmount());
-            int finalMax = overrideMax != null ? overrideMax : (rawIdentifier.contains(":") ? max : unique.maxAmount());
-            if (finalMax < finalMin) finalMax = finalMin;
-            return new RewardItem(unique.itemStack().clone(), finalMin, finalMax);
+        ItemStack uniqueItem = uniqueItemsCfg.getItem(id);
+        if (uniqueItem != null) {
+            return new RewardItem(uniqueItem.clone(), min, max);
         }
 
         // 2. Если не уникальный, проверяем как стандартный Material из Minecraft
@@ -143,7 +162,6 @@ public class LevelItemTierCfg {
             mat = Material.getMaterial(id.toUpperCase());
         }
         if (mat != null) {
-            if (max < min) max = min;
             return new RewardItem(new ItemStack(mat, 1), min, max);
         }
 

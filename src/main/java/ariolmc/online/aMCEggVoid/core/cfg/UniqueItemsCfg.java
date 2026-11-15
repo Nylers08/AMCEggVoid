@@ -2,7 +2,6 @@ package ariolmc.online.aMCEggVoid.core.cfg;
 
 import ariolmc.online.aMCEggVoid.AMCEggVoid;
 import ariolmc.online.aMCEggVoid.core.ItemStackBuilder;
-import ariolmc.online.aMCEggVoid.core.itemGiver.RewardItem;
 import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -26,7 +25,7 @@ public class UniqueItemsCfg {
     private FileConfiguration config;
 
     @Getter
-    private final Map<String, RewardItem> uniqueItems = new HashMap<>();
+    private final Map<String, ItemStack> uniqueItems = new HashMap<>();
 
     public UniqueItemsCfg() {
         load();
@@ -75,12 +74,6 @@ public class UniqueItemsCfg {
             String name = itemSec.getString("name", "");
             String material = itemSec.getString("material", "STONE");
             List<String> lore = itemSec.getStringList("lore");
-            int min = itemSec.getInt("min", 1);
-            int max = itemSec.getInt("max", 1);
-            if (max < min) {
-                max = min;
-            }
-
             boolean unbreakable = itemSec.getBoolean("unbreakable", false);
             Integer customModelData = itemSec.contains("custom-model-data") ? itemSec.getInt("custom-model-data") : null;
 
@@ -127,13 +120,13 @@ public class UniqueItemsCfg {
             }
 
             ItemStack item = builder.build();
-            RewardItem rewardItem = new RewardItem(item, min, max);
-            this.uniqueItems.put(key.toLowerCase(), rewardItem);
+            this.uniqueItems.put(key.toLowerCase(), item);
         }
     }
 
-    public RewardItem getItem(String id) {
+    public ItemStack getItem(String id) {
         if (id == null) return null;
-        return uniqueItems.get(id.toLowerCase());
+        ItemStack item = uniqueItems.get(id.toLowerCase());
+        return item != null ? item.clone() : null;
     }
 }

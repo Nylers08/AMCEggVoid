@@ -33,7 +33,7 @@ item-tier:
       give-tick-delay: 100
 
       items:
-        - "mega_diamond"
+        - "mega_diamond:1:12"
         - "STICK:1:12"
 
     2:
@@ -41,8 +41,8 @@ item-tier:
       give-tick-delay: 200
 
       items:
-        - "void_sword"
-        - "mega_emerald"
+        - "void_sword:1:1"
+        - "mega_emerald:1:12"
         - "OAK_SLAB:1:12"
 
 nether:
