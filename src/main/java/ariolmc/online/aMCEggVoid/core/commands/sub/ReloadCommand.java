@@ -56,7 +56,7 @@ public class ReloadCommand implements Subcommand {
         itemGiverModule.getItemTier().reload();
         itemGiverModule.getGiverBossBar().reloadCfg();
         itemGiverModule.getItemGiver().reloadCfg();
-        playerDropModule.getMainMaterialList().reload();
+        playerDropModule.reload();
         if (netherModule != null) {
             netherModule.reloadCfg();
         }

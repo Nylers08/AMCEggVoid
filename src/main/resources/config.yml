@@ -71,3 +71,17 @@ end:
   scatter-chance: 0.045
   generate-pillars: true
   spawn-dragon: true
+
+# Настройка потери вещей при смерти игрока (в процентах от 0 до 100)
+# Ключевые предметы (non-drop-items) и хотбар (слоты 0-8) никогда не выпадают.
+player-drop:
+  combat-tag-seconds: 15
+  self-death:
+    min-percent: 0.0
+    max-percent: 50.0
+  mob-death:
+    min-percent: 0.0
+    max-percent: 30.0
+  player-death:
+    min-percent: 0.0
+    max-percent: 10.0
