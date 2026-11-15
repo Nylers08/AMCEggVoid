@@ -24,3 +24,179 @@ items:
     material: "EMERALD"
     lore:
       - "§75 узбеков"
+
+  # Зачарованная броня
+  starter_helmet:
+    name: "§eКаска Строителя"
+    material: "GOLDEN_HELMET"
+    lore:
+      - "§7Защитит голову от падающего булыжника"
+    enchantments:
+      protection: 2
+      unbreaking: 5
+      aqua_affinity: 1
+
+  bounce_boots:
+    name: "§bТапки Прыгуна"
+    material: "DIAMOND_BOOTS"
+    lore:
+      - "§7Мягкая посадка с любой высоты"
+    enchantments:
+      feather_falling: 4
+      depth_strider: 3
+      unbreaking: 3
+
+  void_helmet:
+    name: "§5Шлем Пустоты"
+    material: "NETHERITE_HELMET"
+    lore:
+      - "§7Часть легендарного сета Бездны"
+    enchantments:
+      protection: 4
+      respiration: 3
+      unbreaking: 3
+    unbreakable: true
+
+  void_chestplate:
+    name: "§5Нагрудник Пустоты"
+    material: "NETHERITE_CHESTPLATE"
+    lore:
+      - "§7Часть легендарного сета Бездны"
+    enchantments:
+      protection: 4
+      thorns: 2
+      unbreaking: 3
+    unbreakable: true
+
+  void_leggings:
+    name: "§5Поножи Пустоты"
+    material: "NETHERITE_LEGGINGS"
+    lore:
+      - "§7Часть легендарного сета Бездны"
+    enchantments:
+      protection: 4
+      swift_sneak: 3
+      unbreaking: 3
+    unbreakable: true
+
+  void_boots:
+    name: "§5Сапоги Пустоты"
+    material: "NETHERITE_BOOTS"
+    lore:
+      - "§7Часть легендарного сета Бездны"
+    enchantments:
+      protection: 4
+      feather_falling: 4
+      unbreaking: 3
+    unbreakable: true
+
+  # Уникальное оружие и инструменты
+  sky_axe:
+    name: "§bТопор Небесного Гнева"
+    material: "DIAMOND_AXE"
+    lore:
+      - "§7Рубит и деревья, и щиты противников"
+    enchantments:
+      sharpness: 4
+      efficiency: 5
+      unbreaking: 3
+
+  void_bow:
+    name: "§dЛук Бездны"
+    material: "BOW"
+    lore:
+      - "§7Стреляет горящими стрелами в пустоту"
+    enchantments:
+      power: 5
+      punch: 2
+      flame: 1
+      infinity: 1
+      unbreaking: 3
+
+  sniper_crossbow:
+    name: "§cАрбалет Снайпера"
+    material: "CROSSBOW"
+    lore:
+      - "§7Перезаряжается быстрее, чем ты моргнёшь"
+    enchantments:
+      quick_charge: 3
+      piercing: 4
+      unbreaking: 3
+
+  void_pickaxe:
+    name: "§3Кирка Шахтёра Пустоты"
+    material: "NETHERITE_PICKAXE"
+    lore:
+      - "§7Ломает даже обсидиан как масло"
+    enchantments:
+      efficiency: 5
+      fortune: 3
+      unbreaking: 3
+
+  knockback_stick:
+    name: "§6Палка-Улеталка"
+    material: "STICK"
+    lore:
+      - "§7Отправляет друзей в бездну"
+      - "§7без обратного билета"
+    enchantments:
+      knockback: 4
+
+  # Просто смешные предметы
+  uzbek_bread:
+    name: "§eБулочка от 5 узбеков"
+    material: "BREAD"
+    lore:
+      - "§7Горячая, прямо из тандыра"
+      - "§7Можно и покушать, и ударить"
+    enchantments:
+      fire_aspect: 1
+      knockback: 1
+
+  lucky_fish:
+    name: "§bСелёдка Удачи"
+    material: "COD"
+    lore:
+      - "§7Бьёт слабо, но пахнет победой"
+    enchantments:
+      looting: 3
+      knockback: 2
+
+  admin_slipper:
+    name: "§cТапок Админа"
+    material: "LEATHER_BOOTS"
+    lore:
+      - "§7Оружие массового воспитания"
+    enchantments:
+      knockback: 3
+      thorns: 3
+      unbreaking: 10
+
+  cursed_potato:
+    name: "§6Святая Картошка"
+    material: "BAKED_POTATO"
+    lore:
+      - "§7Выращена на краю пустоты"
+      - "§7Осторожно: горячо!"
+    enchantments:
+      sharpness: 3
+      fire_aspect: 1
+
+  gigachad_hoe:
+    name: "§dМотыга Гигачада"
+    material: "NETHERITE_HOE"
+    lore:
+      - "§7Для тех, кто фармит с лицом сигмы"
+    enchantments:
+      sharpness: 5
+      efficiency: 5
+      knockback: 2
+    unbreakable: true
+
+  sus_cookie:
+    name: "§6Подозрительное Печенье"
+    material: "COOKIE"
+    lore:
+      - "§7Кто его сюда положил?!"
+    enchantments:
+      luck_of_the_sea: 3
