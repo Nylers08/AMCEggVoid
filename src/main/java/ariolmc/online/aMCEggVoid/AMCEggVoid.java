@@ -8,6 +8,7 @@ import ariolmc.online.aMCEggVoid.core.commands.EggVoidCommands;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.itemGiver.listener.ConnectPlayerListener;
 import ariolmc.online.aMCEggVoid.core.nether.NetherModule;
+import ariolmc.online.aMCEggVoid.core.piglinBarter.PiglinBarterModule;
 import ariolmc.online.aMCEggVoid.core.playerDrop.PlayerDropModule;
 import lombok.Getter;
 import org.bukkit.Bukkit;
@@ -42,6 +43,9 @@ public final class AMCEggVoid extends JavaPlugin {
     @Getter
     private static BlazeDropModule blazeDropModule;
 
+    @Getter
+    private static PiglinBarterModule piglinBarterModule;
+
     @Override
     public void onEnable() {
         instance = this;
@@ -58,11 +62,13 @@ public final class AMCEggVoid extends JavaPlugin {
         playerDropModule = new PlayerDropModule();
         netherModule = new NetherModule(uniqueItemsCfg, lootCfg);
         blazeDropModule = new BlazeDropModule(uniqueItemsCfg, lootCfg);
+        piglinBarterModule = new PiglinBarterModule(uniqueItemsCfg, lootCfg);
 
         Bukkit.getPluginManager().registerEvents(new ConnectPlayerListener(memberList, itemGiverModule), this);
         Bukkit.getPluginManager().registerEvents(playerDropModule.getPlayerDeathDropListener(), this);
         Bukkit.getPluginManager().registerEvents(blazeDropModule.getDeathListener(), this);
-        this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule));
+        Bukkit.getPluginManager().registerEvents(piglinBarterModule.getBarterListener(), this);
+        this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule));
     }
 
     @Override

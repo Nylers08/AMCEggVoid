@@ -5,6 +5,7 @@ import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropModule;
 import ariolmc.online.aMCEggVoid.core.commands.sub.*;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.nether.NetherModule;
+import ariolmc.online.aMCEggVoid.core.piglinBarter.PiglinBarterModule;
 import ariolmc.online.aMCEggVoid.core.playerDrop.PlayerDropModule;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,18 +24,24 @@ public class EggVoidCommands implements CommandExecutor {
     private final PlayerDropModule playerDropModule;
     private final NetherModule netherModule;
     private final BlazeDropModule blazeDropModule;
+    private final PiglinBarterModule piglinBarterModule;
     private final Map<String, Subcommand> subcommandMap = new HashMap<>();
 
     public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule) {
-        this(memberList, itemGiverModule, playerDropModule, netherModule, null);
+        this(memberList, itemGiverModule, playerDropModule, netherModule, null, null);
     }
 
     public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule) {
+        this(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, null);
+    }
+
+    public EggVoidCommands(MemberList memberList, ItemGiverModule itemGiverModule, PlayerDropModule playerDropModule, NetherModule netherModule, BlazeDropModule blazeDropModule, PiglinBarterModule piglinBarterModule) {
         this.memberList = memberList;
         this.itemGiver = itemGiverModule;
         this.playerDropModule = playerDropModule;
         this.netherModule = netherModule;
         this.blazeDropModule = blazeDropModule;
+        this.piglinBarterModule = piglinBarterModule;
 
         initSubcommand();
     }
@@ -42,7 +49,7 @@ public class EggVoidCommands implements CommandExecutor {
     private void initSubcommand() {
         addSubCommand(new StartCommand(itemGiver.getItemGiver()), "start");
         addSubCommand(new StopCommand(itemGiver.getItemGiver()), "stop");
-        addSubCommand(new ReloadCommand(memberList, itemGiver, playerDropModule, netherModule, blazeDropModule), "reload");
+        addSubCommand(new ReloadCommand(memberList, itemGiver, playerDropModule, netherModule, blazeDropModule, piglinBarterModule), "reload");
         addSubCommand(new AddMemberCommand(memberList, itemGiver.getGiverBossBar()), "addmember");
         addSubCommand(new RemoveMemberCommand(memberList, itemGiver.getGiverBossBar()), "removemember");
         addSubCommand(new NetherGenCommand(netherModule), "nethergen", "gennether");
