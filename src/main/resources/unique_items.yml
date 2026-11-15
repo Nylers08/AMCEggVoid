@@ -200,3 +200,48 @@ items:
       - "§7Кто его сюда положил?!"
     enchantments:
       luck_of_the_sea: 3
+
+  sigma_brick:
+    name: "§cКирпич Сигмы"
+    material: "BRICK"
+    lore:
+      - "§7Один удар — и враг задумается о жизни"
+    enchantments:
+      sharpness: 3
+      knockback: 3
+
+  goblin_compass:
+    name: "§aКомпас Жадного Гоблина"
+    material: "COMPASS"
+    lore:
+      - "§7Показывает туда, где лежит халява"
+    enchantments:
+      fortune: 3
+      looting: 2
+
+  grandma_pan:
+    name: "§7Сковородка Бабушки"
+    material: "IRON_SHOVEL"
+    lore:
+      - "§7Бьёт звонко, жарит на месте"
+    enchantments:
+      sharpness: 3
+      fire_aspect: 2
+      knockback: 3
+
+  sleepy_pillow:
+    name: "§fПодушка-Вырубушка"
+    material: "WHITE_WOOL"
+    lore:
+      - "§7Мягкая снаружи, уносит в бездну внутри"
+    enchantments:
+      knockback: 5
+
+  golden_carrot_king:
+    name: "§6Королевская Морковка"
+    material: "GOLDEN_CARROT"
+    lore:
+      - "§7Для идеального зрения в темноте Энда"
+    enchantments:
+      sharpness: 4
+      unbreaking: 5
