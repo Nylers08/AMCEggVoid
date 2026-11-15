@@ -14,14 +14,23 @@ import java.util.Map;
 public class LevelItemTierCfg {
 
     private final UniqueItemsCfg uniqueItemsCfg;
+    private final LootCfg lootCfg;
 
     public LevelItemTierCfg(UniqueItemsCfg uniqueItemsCfg) {
+        this(uniqueItemsCfg, null);
+    }
+
+    public LevelItemTierCfg(UniqueItemsCfg uniqueItemsCfg, LootCfg lootCfg) {
         this.uniqueItemsCfg = uniqueItemsCfg;
+        this.lootCfg = lootCfg;
     }
 
     public List<LevelItemTier> loadLevels() {
-        FileConfiguration cfg = CfgUtils.getConfig();
         List<LevelItemTier> levelsList = new ArrayList<>();
+
+        FileConfiguration cfg = (lootCfg != null && lootCfg.getConfig() != null && lootCfg.getConfig().isConfigurationSection("item-tier.levels"))
+                ? lootCfg.getConfig()
+                : CfgUtils.getConfig();
 
         ConfigurationSection levelsSection = cfg.getConfigurationSection("item-tier.levels");
         if (levelsSection == null) {

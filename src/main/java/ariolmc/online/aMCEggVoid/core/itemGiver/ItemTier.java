@@ -1,6 +1,7 @@
 package ariolmc.online.aMCEggVoid.core.itemGiver;
 
 import ariolmc.online.aMCEggVoid.core.cfg.LevelItemTierCfg;
+import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
 import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
 import lombok.Getter;
 
@@ -10,17 +11,27 @@ public class ItemTier {
 
     @Getter
     private final UniqueItemsCfg uniqueItemsCfg;
+    @Getter
+    private final LootCfg lootCfg;
     private final LevelItemTierCfg cfg;
     private List<LevelItemTier> levels;
 
     public ItemTier() {
-        this.uniqueItemsCfg = new UniqueItemsCfg();
-        this.cfg = new LevelItemTierCfg(this.uniqueItemsCfg);
+        this(new UniqueItemsCfg(), new LootCfg());
+    }
+
+    public ItemTier(UniqueItemsCfg uniqueItemsCfg, LootCfg lootCfg) {
+        this.uniqueItemsCfg = uniqueItemsCfg;
+        this.lootCfg = lootCfg;
+        this.cfg = new LevelItemTierCfg(this.uniqueItemsCfg, this.lootCfg);
         reload();
     }
 
     public void reload() {
         uniqueItemsCfg.load();
+        if (lootCfg != null) {
+            lootCfg.load();
+        }
         levels = cfg.loadLevels();
     }
 

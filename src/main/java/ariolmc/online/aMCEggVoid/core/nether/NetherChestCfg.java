@@ -1,6 +1,7 @@
 package ariolmc.online.aMCEggVoid.core.nether;
 
 import ariolmc.online.aMCEggVoid.core.cfg.CfgUtils;
+import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
 import ariolmc.online.aMCEggVoid.core.cfg.LootConfigHelper;
 import ariolmc.online.aMCEggVoid.core.cfg.LootEntry;
 import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
@@ -17,6 +18,7 @@ import java.util.Random;
 public class NetherChestCfg {
 
     private final UniqueItemsCfg uniqueItemsCfg;
+    private final LootCfg lootCfg;
     private final Random random = new Random();
 
     private boolean enabled = true;
@@ -27,34 +29,51 @@ public class NetherChestCfg {
     private final List<LootEntry> loot = new ArrayList<>();
 
     public NetherChestCfg(UniqueItemsCfg uniqueItemsCfg) {
+        this(uniqueItemsCfg, null);
+    }
+
+    public NetherChestCfg(UniqueItemsCfg uniqueItemsCfg, LootCfg lootCfg) {
         this.uniqueItemsCfg = uniqueItemsCfg;
+        this.lootCfg = lootCfg;
         load();
     }
 
     public void load() {
         this.loot.clear();
-        FileConfiguration config = CfgUtils.getConfig();
+        FileConfiguration mainConfig = CfgUtils.getConfig();
 
-        ConfigurationSection section = config.getConfigurationSection("nether.chests");
-        if (section == null) {
-            section = config.getConfigurationSection("nether-chests");
+        // 1. Настройки генерации (количество сундуков, enabled) берем из главного config.yml
+        ConfigurationSection genSection = mainConfig.getConfigurationSection("nether.chests");
+        if (genSection == null) {
+            genSection = mainConfig.getConfigurationSection("nether-chests");
         }
 
-        if (section == null) {
+        if (genSection == null) {
             this.enabled = false;
-            return;
+        } else {
+            this.enabled = genSection.getBoolean("enabled", true);
+            this.minChests = Math.max(0, genSection.getInt("min-chests", 3));
+            this.maxChests = Math.max(this.minChests, genSection.getInt("max-chests", 8));
         }
 
-        this.enabled = section.getBoolean("enabled", true);
-        this.minChests = Math.max(0, section.getInt("min-chests", 3));
-        this.maxChests = Math.max(this.minChests, section.getInt("max-chests", 8));
-        this.minItems = Math.max(0, section.getInt("min-items", 2));
-        this.maxItems = Math.max(this.minItems, section.getInt("max-items", 5));
+        // 2. Настройки содержимого сундука (лут, min-items, max-items) берем из loot.yml -> chest.nether
+        ConfigurationSection lootSection = null;
+        if (lootCfg != null && lootCfg.getConfig() != null) {
+            lootSection = lootCfg.getConfig().getConfigurationSection("chest.nether");
+        }
+        if (lootSection == null) {
+            lootSection = genSection;
+        }
 
-        if (section.contains("loot")) {
-            this.loot.addAll(LootConfigHelper.loadLootList(section, "loot", uniqueItemsCfg));
-        } else if (section.contains("items")) {
-            this.loot.addAll(LootConfigHelper.loadLootList(section, "items", uniqueItemsCfg));
+        if (lootSection != null) {
+            this.minItems = Math.max(0, lootSection.getInt("min-items", 2));
+            this.maxItems = Math.max(this.minItems, lootSection.getInt("max-items", 5));
+
+            if (lootSection.contains("loot")) {
+                this.loot.addAll(LootConfigHelper.loadLootList(lootSection, "loot", uniqueItemsCfg));
+            } else if (lootSection.contains("items")) {
+                this.loot.addAll(LootConfigHelper.loadLootList(lootSection, "items", uniqueItemsCfg));
+            }
         }
     }
 

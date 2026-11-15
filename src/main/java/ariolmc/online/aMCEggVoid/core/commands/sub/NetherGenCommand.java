@@ -81,18 +81,13 @@ public class NetherGenCommand implements Subcommand {
         sender.sendMessage("§6AMCEggVoid | §eГенерация сетки Незера (радиус: " + gridRadius + ")...");
         int placed = netherModule.generateNether(world, gridRadius);
 
-        sender.sendMessage("§6AMCEggVoid | §aСетка Незера успешно сгенерирована!");
         sender.sendMessage("§6AMCEggVoid | §fУстановлено блоков сетки: §e" + placed + "§f на высоте Y=" + netherModule.getCfg().getGridY() + ".");
-        sender.sendMessage("§6AMCEggVoid | §fОсновная сетка: §cНезерак§f с шагом 3 (дистанция 2 блока).");
 
         List<BlazeZone> zones = netherModule.getActiveZones();
         sender.sendMessage("§6AMCEggVoid | §fСгенерировано зон с ифритами: §e" + zones.size() + "§f шт.");
         for (int i = 0; i < zones.size(); i++) {
             BlazeZone z = zones.get(i);
-            sender.sendMessage("§6AMCEggVoid | §7• Зона #" + (i + 1) + ": грань=" + z.getBlocksOnEdge()
-                    + " блоков, спавнер строго по центру [X=" + z.getCenterX()
-                    + ", Y=" + (netherModule.getCfg().getGridY() + 1)
-                    + ", Z=" + z.getCenterZ() + "].");
+            sender.sendMessage("§6AMCEggVoid | §7• Зона #" + (i + 1) + ": грань=" + z.getBlocksOnEdge() + " блоков");
         }
         sender.sendMessage("§6AMCEggVoid | §fСгенерировано сундуков с лутом: §e" + netherModule.getLastGeneratedChestsCount() + "§f шт.");
     }

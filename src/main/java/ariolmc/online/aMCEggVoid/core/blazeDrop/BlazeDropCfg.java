@@ -1,6 +1,7 @@
 package ariolmc.online.aMCEggVoid.core.blazeDrop;
 
 import ariolmc.online.aMCEggVoid.core.cfg.CfgUtils;
+import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
 import ariolmc.online.aMCEggVoid.core.cfg.LootConfigHelper;
 import ariolmc.online.aMCEggVoid.core.cfg.LootEntry;
 import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
@@ -17,6 +18,7 @@ import java.util.Random;
 public class BlazeDropCfg {
 
     private final UniqueItemsCfg uniqueItemsCfg;
+    private final LootCfg lootCfg;
     private final Random random = new Random();
 
     private boolean enabled = true;
@@ -26,17 +28,28 @@ public class BlazeDropCfg {
     private final List<LootEntry> items = new ArrayList<>();
 
     public BlazeDropCfg(UniqueItemsCfg uniqueItemsCfg) {
+        this(uniqueItemsCfg, null);
+    }
+
+    public BlazeDropCfg(UniqueItemsCfg uniqueItemsCfg, LootCfg lootCfg) {
         this.uniqueItemsCfg = uniqueItemsCfg;
+        this.lootCfg = lootCfg;
         load();
     }
 
     public void load() {
         this.items.clear();
-        FileConfiguration config = CfgUtils.getConfig();
 
-        ConfigurationSection section = config.getConfigurationSection("blaze-drop");
+        ConfigurationSection section = null;
+        if (lootCfg != null && lootCfg.getConfig() != null) {
+            section = lootCfg.getConfig().getConfigurationSection("blaze-drop");
+        }
         if (section == null) {
-            section = config.getConfigurationSection("nether.blaze-drop");
+            FileConfiguration config = CfgUtils.getConfig();
+            section = config.getConfigurationSection("blaze-drop");
+            if (section == null) {
+                section = config.getConfigurationSection("nether.blaze-drop");
+            }
         }
 
         if (section == null) {

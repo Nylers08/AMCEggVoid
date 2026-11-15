@@ -2,6 +2,8 @@ package ariolmc.online.aMCEggVoid;
 
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.blazeDrop.BlazeDropModule;
+import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
+import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
 import ariolmc.online.aMCEggVoid.core.commands.EggVoidCommands;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
 import ariolmc.online.aMCEggVoid.core.itemGiver.listener.ConnectPlayerListener;
@@ -18,6 +20,12 @@ public final class AMCEggVoid extends JavaPlugin {
 
     @Getter
     private static AMCEggVoid instance;
+
+    @Getter
+    private static UniqueItemsCfg uniqueItemsCfg;
+
+    @Getter
+    private static LootCfg lootCfg;
 
     @Getter
     private static MemberList memberList;
@@ -39,13 +47,17 @@ public final class AMCEggVoid extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         saveResource("unique_items.yml", false);
+        saveResource("loot.yml", false);
+
+        uniqueItemsCfg = new UniqueItemsCfg();
+        lootCfg = new LootCfg();
 
         memberList = new MemberList();
 
-        itemGiverModule = new ItemGiverModule(memberList);
+        itemGiverModule = new ItemGiverModule(memberList, uniqueItemsCfg, lootCfg);
         playerDropModule = new PlayerDropModule();
-        netherModule = new NetherModule(itemGiverModule.getItemTier().getUniqueItemsCfg());
-        blazeDropModule = new BlazeDropModule(itemGiverModule.getItemTier().getUniqueItemsCfg());
+        netherModule = new NetherModule(uniqueItemsCfg, lootCfg);
+        blazeDropModule = new BlazeDropModule(uniqueItemsCfg, lootCfg);
 
         Bukkit.getPluginManager().registerEvents(new ConnectPlayerListener(memberList, itemGiverModule), this);
         Bukkit.getPluginManager().registerEvents(playerDropModule.getPlayerDeathDropListener(), this);

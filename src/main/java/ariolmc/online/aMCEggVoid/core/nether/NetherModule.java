@@ -1,5 +1,6 @@
 package ariolmc.online.aMCEggVoid.core.nether;
 
+import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
 import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
 import lombok.Getter;
 import org.bukkit.World;
@@ -15,14 +16,18 @@ public class NetherModule {
     private final NetherGridChunkGenerator chunkGenerator;
 
     public NetherModule() {
-        this(null);
+        this(null, null);
     }
 
     public NetherModule(UniqueItemsCfg uniqueItemsCfg) {
+        this(uniqueItemsCfg, null);
+    }
+
+    public NetherModule(UniqueItemsCfg uniqueItemsCfg, LootCfg lootCfg) {
         this.cfg = new NetherCfg();
         this.cfg.load();
 
-        this.chestCfg = new NetherChestCfg(uniqueItemsCfg);
+        this.chestCfg = new NetherChestCfg(uniqueItemsCfg, lootCfg);
         this.chestCfg.load();
 
         this.gridService = new NetherGridService(this.cfg, this.chestCfg);
