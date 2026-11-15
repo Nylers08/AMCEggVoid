@@ -3,10 +3,11 @@ item-tier:
   levels:
     1:
       tick-start: 0
-      give-tick-delay: 140
+      give-tick-delay: 160
       items:
         - "OAK_PLANKS:6:16"
         - "OAK_PLANKS:4:12"
+        - "OBSIDIAN:1:6"
         - "SPRUCE_PLANKS:6:16"
         - "BIRCH_PLANKS:6:16"
         - "DARK_OAK_PLANKS:6:16"
@@ -52,11 +53,12 @@ item-tier:
 
     2:
       tick-start: 800
-      give-tick-delay: 160
+      give-tick-delay: 180
       items:
         - "OAK_PLANKS:8:18"
         - "SPRUCE_PLANKS:6:16"
         - "JUNGLE_PLANKS:6:16"
+        - "OBSIDIAN:1:6"
         - "COBBLESTONE:8:18"
         - "STONE:6:14"
         - "SMOOTH_STONE:4:12"
@@ -98,12 +100,13 @@ item-tier:
 
     3:
       tick-start: 1800
-      give-tick-delay: 180
+      give-tick-delay: 200
       items:
         - "OAK_PLANKS:8:20"
         - "DARK_OAK_PLANKS:8:20"
         - "COBBLESTONE:8:20"
         - "STONE_BRICKS:6:16"
+        - "OBSIDIAN:1:6"
         - "MOSSY_STONE_BRICKS:4:12"
         - "DEEPSLATE:6:16"
         - "DEEPSLATE_BRICKS:4:12"
@@ -144,7 +147,7 @@ item-tier:
 
     4:
       tick-start: 3000
-      give-tick-delay: 200
+      give-tick-delay: 220
       items:
         - "COBBLESTONE:8:20"
         - "STONE_BRICKS:8:18"
@@ -152,6 +155,7 @@ item-tier:
         - "DEEPSLATE_TILES:6:14"
         - "OAK_LOG:4:12"
         - "SANDSTONE:6:16"
+        - "OBSIDIAN:1:6"
         - "RED_SANDSTONE:6:16"
         - "QUARTZ_BLOCK:4:10"
         - "COPPER_BLOCK:2:5"
@@ -188,7 +192,7 @@ item-tier:
 
     5:
       tick-start: 4400
-      give-tick-delay: 220
+      give-tick-delay: 240
       items:
         - "STONE_BRICKS:8:18"
         - "OAK_PLANKS:8:18"
@@ -229,10 +233,11 @@ item-tier:
         - "sigma_brick:1:1"
         - "OBSIDIAN:2:4"
         - "OBSIDIAN:2:4"
+        - "OBSIDIAN:1:6"
 
     6:
       tick-start: 6000
-      give-tick-delay: 250
+      give-tick-delay: 280
       items:
         - "COBBLESTONE:8:16"
         - "BLACKSTONE:6:16"
@@ -274,10 +279,11 @@ item-tier:
         - "golden_carrot_king:1:1"
         - "OBSIDIAN:2:5"
         - "OBSIDIAN:2:5"
+        - "OBSIDIAN:1:6"
 
     7:
       tick-start: 7800
-      give-tick-delay: 280
+      give-tick-delay: 300
       items:
         - "OAK_PLANKS:6:16"
         - "END_STONE:4:12"
@@ -318,10 +324,11 @@ item-tier:
         - "sleepy_pillow:1:1"
         - "OBSIDIAN:3:6"
         - "OBSIDIAN:3:6"
+        - "OBSIDIAN:1:6"
 
     8:
       tick-start: 9800
-      give-tick-delay: 310
+      give-tick-delay: 350
       items:
         - "DIRT:4:10"
         - "IRON_INGOT:4:10"
@@ -361,10 +368,11 @@ item-tier:
         - "grandma_pan:1:1"
         - "OBSIDIAN:3:6"
         - "OBSIDIAN:3:6"
+        - "OBSIDIAN:1:6"
 
     9:
       tick-start: 12000
-      give-tick-delay: 340
+      give-tick-delay: 350
       items:
         - "COBBLESTONE:4:12"
         - "IRON_INGOT:5:12"
@@ -406,7 +414,7 @@ item-tier:
 
     10:
       tick-start: 14400
-      give-tick-delay: 370
+      give-tick-delay: 400
       items:
         - "STICK:4:10"
         - "IRON_INGOT:5:12"
@@ -448,7 +456,7 @@ item-tier:
 
     11:
       tick-start: 17000
-      give-tick-delay: 400
+      give-tick-delay: 420
       items:
         - "OAK_PLANKS:4:10"
         - "DIAMOND:3:6"
@@ -765,17 +773,42 @@ item-tier:
 # Настройка дополнительного нестандартного дропа с ифритов (Blaze)
 blaze-drop:
   enabled: true
-  chance: 0.35 # Шанс выпадения дополнительного дропа при смерти ифрита (0.35 = 35%)
+  chance: 0.25 # Общий фолбэк-шанс, если у предмета не указан свой шанс
   player-kill-only: false # Выпадать только при убийстве игроком (false = при любой смерти ифрита)
-  roll-mode: "RANDOM_ONE" # "RANDOM_ONE" (выбирается один предмет из списка) или "ALL" (проверяется шанс каждого предмета)
+  roll-mode: "ALL" # Проверяется индивидуальный шанс каждого предмета
 
   # Список предметов: поддерживаются уникальные предметы из unique_items.yml и стандартные материалы Minecraft.
-  # Формат строки: "ID:min:max" или "ID:min:max:шанс"
+  # Формат строки: "ID:min:max:шанс"
   items:
-    - "mega_diamond:1:2"
-    - "void_sword:1:1"
-    - "mega_emerald:1:3"
-    - "NETHERITE_SCRAP:1:2"
+    # Зачарованная броня (малый шанс)
+    - "starter_helmet:1:1:0.05"
+    - "bounce_boots:1:1:0.04"
+    - "void_helmet:1:1:0.02"
+    - "void_chestplate:1:1:0.02"
+    - "void_leggings:1:1:0.02"
+    - "void_boots:1:1:0.02"
+    # Мемные вещи (малый шанс)
+    - "uzbek_bread:1:1:0.06"
+    - "lucky_fish:1:1:0.05"
+    - "admin_slipper:1:1:0.03"
+    - "cursed_potato:1:2:0.06"
+    - "sigma_brick:1:1:0.04"
+    - "grandma_pan:1:1:0.04"
+    - "sleepy_pillow:1:1:0.03"
+    - "sus_cookie:1:2:0.06"
+    - "knockback_stick:1:1:0.03"
+    # Полезные ресурсы
+    - "OBSIDIAN:1:3:0.15"
+    - "ENDER_PEARL:1:2:0.15"
+    - "NETHERITE_SCRAP:1:2:0.08"
+    - "DIAMOND:1:3:0.12"
+    - "GOLD_INGOT:2:5:0.18"
+    - "GOLDEN_APPLE:1:2:0.08"
+    - "EXPERIENCE_BOTTLE:2:5:0.15"
+    - "FIRE_CHARGE:1:3:0.18"
+    - "mega_diamond:1:2:0.06"
+    - "mega_emerald:1:2:0.08"
+    - "void_sword:1:1:0.02"
 
 # Настройка лута в сундуках по мирам (nether, в будущем end и др.)
 chest:
