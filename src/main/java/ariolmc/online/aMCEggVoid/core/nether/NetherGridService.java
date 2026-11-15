@@ -10,20 +10,37 @@ import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.Chest;
 import org.bukkit.block.CreatureSpawner;
+import org.bukkit.block.data.Directional;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class NetherGridService {
 
     private final NetherCfg cfg;
+    private final NetherChestCfg chestCfg;
     private final List<BlazeZone> activeZones = new ArrayList<>();
+    private int lastGeneratedChestsCount = 0;
 
     public NetherGridService(NetherCfg cfg) {
+        this(cfg, null);
+    }
+
+    public NetherGridService(NetherCfg cfg, NetherChestCfg chestCfg) {
         this.cfg = cfg;
+        this.chestCfg = chestCfg;
+    }
+
+    public int getLastGeneratedChestsCount() {
+        return lastGeneratedChestsCount;
     }
 
     public List<BlazeZone> getActiveZones() {
@@ -190,15 +207,18 @@ public class NetherGridService {
     }
 
     /**
-     * Генерирует сетку Незера и зоны ифритов со спавнерами.
+     * Генерирует сетку Незера, зоны ифритов со спавнерами и сундуки со случайным лутом.
      */
     public int generateNetherArea(World world, int radius) {
         int baseY = cfg.getGridY();
         int blocksPlaced = 0;
+        this.lastGeneratedChestsCount = 0;
 
         // Распределяем зоны спавна ифритов
         this.activeZones.clear();
         this.activeZones.addAll(distributeBlazeZones(radius));
+
+        List<int[]> netherrackCoords = new ArrayList<>();
 
         int minX = -radius;
         int maxX = radius;
@@ -226,6 +246,9 @@ public class NetherGridService {
                             block.setType(Material.NETHERRACK, false);
                             blocksPlaced++;
                         }
+                        if (x != 0 || z != 0) {
+                            netherrackCoords.add(new int[]{x, z});
+                        }
                     }
                 }
             }
@@ -246,6 +269,70 @@ public class NetherGridService {
             }
         }
 
+        // Генерируем сундуки с лутом на блоках сетки
+        generateChests(world, baseY, netherrackCoords);
+
         return blocksPlaced;
+    }
+
+    private void generateChests(World world, int baseY, List<int[]> netherrackCoords) {
+        if (chestCfg == null || !chestCfg.isEnabled() || netherrackCoords.isEmpty() || chestCfg.getLoot().isEmpty()) {
+            return;
+        }
+
+        Random random = new Random();
+        int minC = Math.max(0, chestCfg.getMinChests());
+        int maxC = Math.max(minC, chestCfg.getMaxChests());
+        int targetChests = minC == maxC ? minC : (minC + random.nextInt(maxC - minC + 1));
+        targetChests = Math.min(targetChests, netherrackCoords.size());
+
+        if (targetChests <= 0) {
+            return;
+        }
+
+        Collections.shuffle(netherrackCoords, random);
+        BlockFace[] faces = {BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST};
+
+        for (int i = 0; i < targetChests; i++) {
+            int[] pos = netherrackCoords.get(i);
+            int cx = pos[0];
+            int cz = pos[1];
+
+            Block chestBlock = world.getBlockAt(cx, baseY + 1, cz);
+            chestBlock.setType(Material.CHEST, false);
+            if (chestBlock.getBlockData() instanceof Directional directional) {
+                directional.setFacing(faces[random.nextInt(faces.length)]);
+                chestBlock.setBlockData(directional, false);
+            }
+
+            if (chestBlock.getState() instanceof Chest chest) {
+                fillChest(chest, random);
+                lastGeneratedChestsCount++;
+            }
+        }
+    }
+
+    private void fillChest(Chest chest, Random random) {
+        Inventory inv = chest.getBlockInventory();
+        inv.clear();
+
+        List<ItemStack> items = chestCfg.rollChestContents();
+        if (items.isEmpty()) {
+            return;
+        }
+
+        List<Integer> slots = new ArrayList<>(inv.getSize());
+        for (int s = 0; s < inv.getSize(); s++) {
+            slots.add(s);
+        }
+        Collections.shuffle(slots, random);
+
+        int idx = 0;
+        for (ItemStack item : items) {
+            if (idx >= slots.size()) {
+                break;
+            }
+            inv.setItem(slots.get(idx++), item);
+        }
     }
 }

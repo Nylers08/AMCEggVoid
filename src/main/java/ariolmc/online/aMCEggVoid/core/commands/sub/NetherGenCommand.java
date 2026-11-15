@@ -94,5 +94,6 @@ public class NetherGenCommand implements Subcommand {
                     + ", Y=" + (netherModule.getCfg().getGridY() + 1)
                     + ", Z=" + z.getCenterZ() + "].");
         }
+        sender.sendMessage("§6AMCEggVoid | §fСгенерировано сундуков с лутом: §e" + netherModule.getLastGeneratedChestsCount() + "§f шт.");
     }
 }

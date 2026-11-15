@@ -44,7 +44,7 @@ public final class AMCEggVoid extends JavaPlugin {
 
         itemGiverModule = new ItemGiverModule(memberList);
         playerDropModule = new PlayerDropModule();
-        netherModule = new NetherModule();
+        netherModule = new NetherModule(itemGiverModule.getItemTier().getUniqueItemsCfg());
         blazeDropModule = new BlazeDropModule(itemGiverModule.getItemTier().getUniqueItemsCfg());
 
         Bukkit.getPluginManager().registerEvents(new ConnectPlayerListener(memberList, itemGiverModule), this);
