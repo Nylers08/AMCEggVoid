@@ -35,6 +35,12 @@ nether:
     min-blocks-on-edge: 9
     max-zones: 3
     padding: 20
+  piglin-zone:
+    block-step: 2
+    max-blocks-on-edge: 15
+    min-blocks-on-edge: 9
+    max-zones: 3
+    padding: 20
   chests:
     enabled: true
     min-chests: 3 # Мин. кол-во сундуков при генерации Незера

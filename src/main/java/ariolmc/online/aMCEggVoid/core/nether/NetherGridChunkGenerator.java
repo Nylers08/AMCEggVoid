@@ -55,13 +55,14 @@ public class NetherGridChunkGenerator extends ChunkGenerator {
 
                 BlazeZone zone = gridService.getBlazeZoneAt(worldX, worldZ);
                 if (zone != null) {
-                    // Зона ифритов: незерские кирпичи с дистанцией 1 блок (шаг 2)
+                    Material floorMat = zone.getType().getFloorMaterial();
+                    // Зона спавна: незерские кирпичи (ифриты) или золотые блоки (пиглины) с дистанцией 1 блок (шаг 2)
                     if (zone.isGridBlock(worldX, worldZ)) {
-                        chunkData.setBlock(x, baseY, z, Material.NETHER_BRICKS);
+                        chunkData.setBlock(x, baseY, z, floorMat);
                     }
                     // Спавнер строго по центру
                     if (worldX == zone.getCenterX() && worldZ == zone.getCenterZ()) {
-                        chunkData.setBlock(x, baseY, z, Material.NETHER_BRICKS);
+                        chunkData.setBlock(x, baseY, z, floorMat);
                         chunkData.setBlock(x, baseY + 1, z, Material.SPAWNER);
                     }
                 } else {

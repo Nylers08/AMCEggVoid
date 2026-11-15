@@ -128,12 +128,9 @@ public class NetherGridService {
     }
 
     /**
-     * Вычисляет нечетный размер грани зоны ифритов в зависимости от радиуса генерации.
+     * Вычисляет нечетный размер грани зоны спавна в зависимости от радиуса генерации.
      */
-    public int calculateBlocksOnEdge(int radius) {
-        int minBlocks = cfg.getMinBlocksOnEdge();
-        int maxBlocks = cfg.getMaxBlocksOnEdge();
-
+    public int calculateBlocksOnEdge(int radius, int minBlocks, int maxBlocks) {
         // Скейлинг: от minBlocks до maxBlocks в зависимости от радиуса (например радиус 30 -> 5, 80 -> 9, 150 -> 15)
         int scaled = minBlocks + 2 * (int) Math.max(0, (radius - 30) / 20.0);
         if (scaled > maxBlocks) scaled = maxBlocks;
@@ -149,18 +146,29 @@ public class NetherGridService {
     }
 
     /**
-     * Создает список случайных зон ифритов, не перекрывающих друг друга.
+     * Создает список случайных зон (ифритов и пиглинов), не перекрывающих друг друга.
      */
-    public List<BlazeZone> distributeBlazeZones(int radius) {
+    public List<BlazeZone> distributeZones(int radius) {
         List<BlazeZone> zones = new ArrayList<>();
-        int blocksOnEdge = calculateBlocksOnEdge(radius);
+        Random random = new Random();
+
+        // 1. Зоны ифритов (из незерских кирпичей)
+        int blazeEdge = calculateBlocksOnEdge(radius, cfg.getMinBlocksOnEdge(), cfg.getMaxBlocksOnEdge());
+        placeZonesForType(zones, BlazeZone.ZoneType.BLAZE, radius, blazeEdge, cfg.getMaxZones(), cfg.getZonePadding(), random);
+
+        // 2. Зоны пиглинов (из золотых блоков)
+        int piglinEdge = calculateBlocksOnEdge(radius, cfg.getPiglinMinBlocksOnEdge(), cfg.getPiglinMaxBlocksOnEdge());
+        placeZonesForType(zones, BlazeZone.ZoneType.PIGLIN, radius, piglinEdge, cfg.getPiglinMaxZones(), cfg.getPiglinZonePadding(), random);
+
+        return zones;
+    }
+
+    private void placeZonesForType(List<BlazeZone> zones, BlazeZone.ZoneType type, int radius, int blocksOnEdge, int maxZones, int padding, Random random) {
         int halfBlocks = (blocksOnEdge - 1) / 2;
         int halfSpan = halfBlocks * 2;
-        int padding = cfg.getZonePadding();
 
-        // Сколько зон может позволить радиус
         int allowedByRadius = Math.max(1, radius / 40);
-        int targetZones = Math.min(allowedByRadius, cfg.getMaxZones());
+        int targetZones = Math.min(allowedByRadius, maxZones);
 
         int minCoord = -radius + halfSpan + 10;
         int maxCoord = radius - halfSpan - 10;
@@ -168,8 +176,6 @@ public class NetherGridService {
             minCoord = -radius + halfSpan;
             maxCoord = radius - halfSpan;
         }
-
-        Random random = new Random();
 
         for (int i = 0; i < targetZones; i++) {
             boolean placed = false;
@@ -181,11 +187,12 @@ public class NetherGridService {
                 cx = (cx / 2) * 2;
                 cz = (cz / 2) * 2;
 
-                BlazeZone candidate = new BlazeZone(cx, cz, blocksOnEdge);
+                BlazeZone candidate = new BlazeZone(type, cx, cz, blocksOnEdge);
 
                 boolean overlaps = false;
                 for (BlazeZone existing : zones) {
-                    if (candidate.overlaps(existing, padding)) {
+                    int effectivePadding = Math.max(padding, existing.getType() == BlazeZone.ZoneType.BLAZE ? cfg.getZonePadding() : cfg.getPiglinZonePadding());
+                    if (candidate.overlaps(existing, effectivePadding)) {
                         overlaps = true;
                         break;
                     }
@@ -199,24 +206,22 @@ public class NetherGridService {
             }
             if (!placed && zones.isEmpty()) {
                 // Если не удалось разместить со свободным местом, хотя бы одну зону ставим по центру
-                zones.add(new BlazeZone(0, 0, blocksOnEdge));
+                zones.add(new BlazeZone(type, 0, 0, blocksOnEdge));
             }
         }
-
-        return zones;
     }
 
     /**
-     * Генерирует сетку Незера, зоны ифритов со спавнерами и сундуки со случайным лутом.
+     * Генерирует сетку Незера, зоны ифритов и пиглинов со спавнерами и сундуки со случайным лутом.
      */
     public int generateNetherArea(World world, int radius) {
         int baseY = cfg.getGridY();
         int blocksPlaced = 0;
         this.lastGeneratedChestsCount = 0;
 
-        // Распределяем зоны спавна ифритов
+        // Распределяем зоны спавна ифритов и пиглинов
         this.activeZones.clear();
-        this.activeZones.addAll(distributeBlazeZones(radius));
+        this.activeZones.addAll(distributeZones(radius));
 
         List<int[]> netherrackCoords = new ArrayList<>();
 
@@ -230,11 +235,12 @@ public class NetherGridService {
                 BlazeZone zone = getBlazeZoneAt(x, z);
 
                 if (zone != null) {
-                    // Зона ифритов: незерские кирпичи с дистанцией 1 блок (шаг 2)
+                    // Зона спавна (незерские кирпичи для ифритов или золотые блоки для пиглинов) с дистанцией 1 блок (шаг 2)
                     if (zone.isGridBlock(x, z)) {
+                        Material floorMat = zone.getType().getFloorMaterial();
                         Block block = world.getBlockAt(x, baseY, z);
-                        if (block.getType() != Material.NETHER_BRICKS) {
-                            block.setType(Material.NETHER_BRICKS, false);
+                        if (block.getType() != floorMat) {
+                            block.setType(floorMat, false);
                             blocksPlaced++;
                         }
                     }
@@ -259,12 +265,12 @@ public class NetherGridService {
             int cx = zone.getCenterX();
             int cz = zone.getCenterZ();
 
-            world.getBlockAt(cx, baseY, cz).setType(Material.NETHER_BRICKS, false);
+            world.getBlockAt(cx, baseY, cz).setType(zone.getType().getFloorMaterial(), false);
 
             Block spawnerBlock = world.getBlockAt(cx, baseY + 1, cz);
             spawnerBlock.setType(Material.SPAWNER, false);
             if (spawnerBlock.getState() instanceof CreatureSpawner spawner) {
-                spawner.setSpawnedType(EntityType.BLAZE);
+                spawner.setSpawnedType(zone.getType().getEntityType());
                 spawner.update();
             }
         }

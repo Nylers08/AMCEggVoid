@@ -84,10 +84,13 @@ public class NetherGenCommand implements Subcommand {
         sender.sendMessage("§6AMCEggVoid | §fУстановлено блоков сетки: §e" + placed + "§f на высоте Y=" + netherModule.getCfg().getGridY() + ".");
 
         List<BlazeZone> zones = netherModule.getActiveZones();
-        sender.sendMessage("§6AMCEggVoid | §fСгенерировано зон с ифритами: §e" + zones.size() + "§f шт.");
+        long blazeCount = zones.stream().filter(z -> z.getType() == BlazeZone.ZoneType.BLAZE).count();
+        long piglinCount = zones.stream().filter(z -> z.getType() == BlazeZone.ZoneType.PIGLIN).count();
+        sender.sendMessage("§6AMCEggVoid | §fСгенерировано зон спавна: §e" + zones.size() + "§f шт. (Ифриты: §c" + blazeCount + "§f, Пиглины: §e" + piglinCount + "§f).");
         for (int i = 0; i < zones.size(); i++) {
             BlazeZone z = zones.get(i);
-            sender.sendMessage("§6AMCEggVoid | §7• Зона #" + (i + 1) + ": грань=" + z.getBlocksOnEdge() + " блоков");
+            String typeLabel = z.getType() == BlazeZone.ZoneType.PIGLIN ? "§eПиглины" : "§cИфриты";
+            sender.sendMessage("§6AMCEggVoid | §7• Зона #" + (i + 1) + " [" + typeLabel + "§7]: грань=" + z.getBlocksOnEdge() + " блоков");
         }
         sender.sendMessage("§6AMCEggVoid | §fСгенерировано сундуков с лутом: §e" + netherModule.getLastGeneratedChestsCount() + "§f шт.");
     }

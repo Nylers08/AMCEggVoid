@@ -16,6 +16,12 @@ public class NetherCfg {
     private int maxZones = 3;
     private int zonePadding = 20;
 
+    private int piglinGridStep = 2;
+    private int piglinMaxBlocksOnEdge = 15;
+    private int piglinMinBlocksOnEdge = 5;
+    private int piglinMaxZones = 3;
+    private int piglinZonePadding = 20;
+
     public void load() {
         FileConfiguration cfg = CfgUtils.getConfig();
 
@@ -27,5 +33,11 @@ public class NetherCfg {
         this.minBlocksOnEdge = cfg.getInt("nether.blaze-zone.min-blocks-on-edge", 5);
         this.maxZones = cfg.getInt("nether.blaze-zone.max-zones", 3);
         this.zonePadding = cfg.getInt("nether.blaze-zone.padding", 20);
+
+        this.piglinGridStep = cfg.getInt("nether.piglin-zone.block-step", this.blazeGridStep);
+        this.piglinMaxBlocksOnEdge = cfg.getInt("nether.piglin-zone.max-blocks-on-edge", this.maxBlocksOnEdge);
+        this.piglinMinBlocksOnEdge = cfg.getInt("nether.piglin-zone.min-blocks-on-edge", this.minBlocksOnEdge);
+        this.piglinMaxZones = cfg.getInt("nether.piglin-zone.max-zones", this.maxZones);
+        this.piglinZonePadding = cfg.getInt("nether.piglin-zone.padding", this.zonePadding);
     }
 }
