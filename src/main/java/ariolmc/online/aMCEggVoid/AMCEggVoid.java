@@ -73,6 +73,7 @@ public final class AMCEggVoid extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(playerDropModule.getPlayerDeathDropListener(), this);
         Bukkit.getPluginManager().registerEvents(blazeDropModule.getDeathListener(), this);
         Bukkit.getPluginManager().registerEvents(piglinBarterModule.getBarterListener(), this);
+        Bukkit.getPluginManager().registerEvents(netherModule.getSpawnerProtectListener(), this);
         this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, traderModule));
     }
 

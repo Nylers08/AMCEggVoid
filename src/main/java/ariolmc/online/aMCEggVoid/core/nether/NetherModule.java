@@ -2,6 +2,7 @@ package ariolmc.online.aMCEggVoid.core.nether;
 
 import ariolmc.online.aMCEggVoid.core.cfg.LootCfg;
 import ariolmc.online.aMCEggVoid.core.cfg.UniqueItemsCfg;
+import ariolmc.online.aMCEggVoid.core.nether.listener.SpawnerProtectListener;
 import lombok.Getter;
 import org.bukkit.World;
 
@@ -14,6 +15,7 @@ public class NetherModule {
     private final NetherChestCfg chestCfg;
     private final NetherGridService gridService;
     private final NetherGridChunkGenerator chunkGenerator;
+    private final SpawnerProtectListener spawnerProtectListener;
 
     public NetherModule() {
         this(null, null);
@@ -32,6 +34,7 @@ public class NetherModule {
 
         this.gridService = new NetherGridService(this.cfg, this.chestCfg);
         this.chunkGenerator = new NetherGridChunkGenerator(this.cfg, this.gridService);
+        this.spawnerProtectListener = new SpawnerProtectListener();
     }
 
     public void reloadCfg() {
