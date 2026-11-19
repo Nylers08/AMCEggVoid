@@ -3,6 +3,8 @@ package ariolmc.online.aMCEggVoid.core.cfg;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.potion.PotionType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -142,7 +144,29 @@ public final class LootConfigHelper {
         if (mat != null) {
             return new ItemStack(mat, 1);
         }
+
+        String upper = id.trim().toUpperCase();
+        if (upper.startsWith("SPLASH_POTION_")) {
+            return createPotion(Material.SPLASH_POTION, upper.substring("SPLASH_POTION_".length()));
+        }
+        if (upper.startsWith("POTION_")) {
+            return createPotion(Material.POTION, upper.substring("POTION_".length()));
+        }
         return null;
+    }
+
+    private static ItemStack createPotion(Material potionMat, String typeName) {
+        try {
+            PotionType type = PotionType.valueOf(typeName);
+            ItemStack item = new ItemStack(potionMat, 1);
+            if (item.getItemMeta() instanceof PotionMeta meta) {
+                meta.setBasePotionType(type);
+                item.setItemMeta(meta);
+            }
+            return item;
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     public static LootEntry selectWeightedItem(List<LootEntry> items, Random random) {

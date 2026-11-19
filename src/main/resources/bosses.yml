@@ -1,0 +1,93 @@
+# Конфигурация боссов для доп. ивента "Появление Босса" (/eggvoid event start boss)
+boss-event:
+  search-radius: 24
+  min-y: 0
+  max-y: 124
+  platform-material: "POLISHED_BLACKSTONE_BRICKS"
+
+# Привязка боссов к типам миров (NORMAL = Обычный мир, NETHER = Незер)
+worlds:
+  NORMAL:
+    id: "overworld_zombie_boss"
+    entity-type: "ZOMBIE"
+    name: "§2§lГигантский Зомби Бездны"
+    max-health: 260.0
+    scale: 1.7
+    platform-radius: 2
+    bossbar-color: "GREEN"
+    abilities:
+      - "shockwave"
+      - "spawn_adds"
+    loot:
+      # Броня пустоты
+      - "void_helmet:1:1:0.25"
+      - "void_chestplate:1:1:0.20"
+      - "void_leggings:1:1:0.20"
+      - "void_boots:1:1:0.25"
+      # Оружие и инструменты пустоты
+      - "void_sword:1:1:0.22"
+      - "void_bow:1:1:0.22"
+      - "void_pickaxe:1:1:0.22"
+      # Еда
+      - "GOLDEN_APPLE:2:5:0.75"
+      - "COOKED_BEEF:6:12:0.80"
+      - "uzbek_bread:1:2:0.45"
+      - "golden_carrot_king:1:1:0.25"
+      # Блоки
+      - "STONE_BRICKS:16:32:0.80"
+      - "END_STONE:8:16:0.55"
+      # Полезные ресурсы
+      - "DIAMOND:3:7:0.85"
+      - "mega_diamond:1:2:0.65"
+      - "mega_emerald:1:2:0.65"
+      - "NETHERITE_SCRAP:1:3:0.45"
+      # Ресурсы для открытия Энда
+      - "BLAZE_ROD:4:8:0.85"
+      - "BLAZE_POWDER:4:8:0.85"
+      - "ENDER_PEARL:4:8:0.90"
+      - "OBSIDIAN:6:12:0.95"
+      - "GOLD_INGOT:8:16:0.90"
+
+  NETHER:
+    id: "nether_magma_boss"
+    entity-type: "MAGMA_CUBE"
+    name: "§6§lМагма-Титан Незера"
+    max-health: 320.0
+    scale: 1.35
+    platform-radius: 3
+    bossbar-color: "YELLOW"
+    abilities:
+      - "fire_wave"
+      - "leap_slam"
+    loot:
+      # Ресурсы Незера и незерит
+      - "NETHERITE_INGOT:1:2:0.55"
+      - "NETHERITE_SCRAP:2:4:0.75"
+      - "ANCIENT_DEBRIS:1:3:0.60"
+      - "MAGMA_CREAM:4:8:0.85"
+      - "GLOWSTONE_DUST:6:12:0.80"
+      - "QUARTZ:8:16:0.80"
+      # Зелья
+      - "POTION_FIRE_RESISTANCE:1:2:0.75"
+      - "POTION_STRENGTH:1:1:0.55"
+      - "SPLASH_POTION_HEALING:1:2:0.65"
+      # Ресурсы для открытия Энда
+      - "BLAZE_ROD:4:8:0.90"
+      - "BLAZE_POWDER:4:8:0.85"
+      - "ENDER_PEARL:4:8:0.90"
+      - "OBSIDIAN:6:12:0.95"
+      - "GOLD_INGOT:8:16:0.90"
+      # Тотем бессмертия
+      - "TOTEM_OF_UNDYING:1:1:0.35"
+
+# Лут с зомби-аддов, которых призывает босс
+adds:
+  loot:
+    - "OBSIDIAN:1:3:0.40"
+    - "ENDER_PEARL:1:2:0.35"
+    - "BLAZE_POWDER:1:2:0.35"
+    - "BLAZE_ROD:1:2:0.25"
+    - "GOLD_INGOT:2:5:0.45"
+    - "DIAMOND:1:2:0.25"
+    - "GOLDEN_APPLE:1:1:0.20"
+    - "COOKED_BEEF:2:4:0.45"

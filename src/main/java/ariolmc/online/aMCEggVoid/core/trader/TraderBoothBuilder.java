@@ -29,9 +29,13 @@ public class TraderBoothBuilder {
 
         // Центр кабинки — в 3 блоках перед игроком
         Block centerBlock = pLoc.getBlock().getRelative(playerFacing, 3);
-        int cx = centerBlock.getX();
-        int cy = centerBlock.getY();
-        int cz = centerBlock.getZ();
+        return spawnBoothAt(world, centerBlock.getX(), centerBlock.getY(), centerBlock.getZ(), boothFront);
+    }
+
+    public Villager spawnBoothAt(World world, int cx, int cy, int cz, BlockFace boothFront) {
+        if (world == null) {
+            return null;
+        }
 
         // Строим 3x3 кабинку
         for (int dx = -1; dx <= 1; dx++) {

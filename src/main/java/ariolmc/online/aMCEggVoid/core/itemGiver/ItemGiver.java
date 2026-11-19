@@ -1,9 +1,11 @@
 package ariolmc.online.aMCEggVoid.core.itemGiver;
 
 import ariolmc.online.aMCEggVoid.AMCEggVoid;
+import ariolmc.online.aMCEggVoid.AMCEggVoid;
 import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.cfg.ItemGiverCfg;
+import ariolmc.online.aMCEggVoid.core.mail.MailService;
 import lombok.Getter;
 import lombok.experimental.Delegate;
 import org.bukkit.Bukkit;
@@ -82,9 +84,7 @@ public class ItemGiver {
     }
 
     private void giveCycleBody(int tickDelay){
-        List<Player> players = memberList.buildRecipientsPlayers();
-
-        giveItems(players);
+        giveItemsToMembers();
 
         currentTick+=tickDelay;
         if(hasStartCycle){
@@ -93,14 +93,15 @@ public class ItemGiver {
     }
 
 
-    private void giveItems(Collection<? extends Player> players){
+    private void giveItemsToMembers(){
         List<RewardItem> items = currentLevel.getItemList();
         if(items == null || items.isEmpty()){
             return;
         }
         Random random = new Random();
+        MailService mailService = AMCEggVoid.getMailService();
 
-        for (Player player : players){
+        for (String memberName : memberList.getMemberNames()){
             int randInd = random.nextInt(items.size());
             RewardItem randItem = items.get(randInd);
             int min = randItem.minAmount();
@@ -109,8 +110,18 @@ public class ItemGiver {
 
             ItemStack item = randItem.itemStack().clone();
             item.setAmount(randAmount);
-            player.getInventory().addItem(item);
-            player.playSound(player.getLocation(), getSound(), getVolume(), getPitch());
+
+            Player online = Bukkit.getPlayerExact(memberName);
+            if (online != null && online.isOnline()) {
+                if (mailService != null) {
+                    mailService.deliverOrStore(online, item);
+                } else {
+                    online.getInventory().addItem(item);
+                }
+                online.playSound(online.getLocation(), getSound(), getVolume(), getPitch());
+            } else if (mailService != null) {
+                mailService.deliverOrStore(memberName, item);
+            }
         }
     }
 

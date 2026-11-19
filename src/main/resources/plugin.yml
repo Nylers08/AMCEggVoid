@@ -11,3 +11,6 @@ commands:
   eggvoid:
     description: Команда для админа
     usage: /eggvoid
+  mail:
+    description: Забрать неполученные предметы с почты
+    usage: /mail [info]

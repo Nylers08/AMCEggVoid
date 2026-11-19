@@ -1,8 +1,10 @@
 package ariolmc.online.aMCEggVoid.core.commands.sub;
 
+import ariolmc.online.aMCEggVoid.AMCEggVoid;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.commands.Subcommand;
 import ariolmc.online.aMCEggVoid.core.itemGiver.GiverBossBar;
+import ariolmc.online.aMCEggVoid.core.mail.MailService;
 import org.bukkit.command.CommandSender;
 
 public class AddMemberCommand implements Subcommand {
@@ -31,6 +33,10 @@ public class AddMemberCommand implements Subcommand {
 
         memberList.add(playerName);
         giverBossBar.addPlayer(playerName);
+        MailService mailService = AMCEggVoid.getMailService();
+        if (mailService != null) {
+            mailService.getOrCreateMail(playerName);
+        }
         sender.sendMessage("§6AMCEggVoid |§f " + playerName+ "§a теперь участвует");
     }
 }

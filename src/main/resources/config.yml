@@ -72,6 +72,83 @@ end:
   generate-pillars: true
   spawn-dragon: true
 
+# Настройки Алтаря Портала в Энд (/eggvoid portal)
+end-portal:
+  hologram:
+    line-spacing: 0.28
+    base-y-offset: 1.3
+    requirement-line: "§f{name}: §e{collected}§7/§e{required} §7(осталось §c{left}§7)"
+    requirement-done-line: "§a✔ {name}: §a{collected}/{required}"
+    progress-lines:
+      - "§5§lАЛТАРЬ ЭНДА §7(§d{eyes}§7/§d12 §7очей • §e{percent}%§7)"
+      - "{requirements}"
+      - "§eБросайте нужные ресурсы внутрь портала!"
+    opened-lines:
+      - "§5§lАЛТАРЬ ЭНДА §a§lОТКРЫТ!"
+      - "§7Прогресс: §a12§7/§a12 §7очей (§a100%§7)"
+      - "§dПрыгайте в портал!"
+  item-names:
+    BLAZE_ROD: "Стержень ифрита"
+    BLAZE_POWDER: "Огненный порошок"
+    ENDER_PEARL: "Жемчуг Эндера"
+    OBSIDIAN: "Обсидиан"
+    GOLD_INGOT: "Золотой слиток"
+  requirements:
+    BLAZE_ROD: 40
+    BLAZE_POWDER: 40
+    ENDER_PEARL: 40
+    OBSIDIAN: 80
+    GOLD_INGOT: 64
+
+# Настройки дополнительных мини-ивентов (/eggvoid event ...)
+mini-events:
+  auto-enabled: true
+  only-when-main-event-running: true
+  min-interval-seconds: 600
+  max-interval-seconds: 1200
+  countdown-seconds: 60
+  # Показывать ли название следующего ивента во время обратного отсчёта (false = тайна)
+  reveal-next-event: true
+  secret-event-name: "§5§lСекретный ивент"
+  countdown-bossbar-text: "§eДоп. ивент %event% §eначнётся через §c%time%с"
+  active-bossbar-text: "§aИдёт доп. ивент: %event% §7(осталось §e%time%с§7)"
+  events:
+    pvp:
+      reveal-in-countdown: true
+      duration-seconds: 120
+    mob_wave:
+      reveal-in-countdown: true
+      duration-seconds: 90
+      spawn-interval-seconds: 12
+      mobs-per-player-per-wave: 3
+      min-radius: 8
+      max-radius: 24
+    boss:
+      reveal-in-countdown: false
+      duration-seconds: 180
+    loot_chest:
+      reveal-in-countdown: true
+      duration-seconds: 0
+      min-y: 56
+      max-y: 78
+      search-radius: 16
+      origin-spread: 20
+      min-items: 5
+      max-items: 9
+      totem-chance: 0.35
+    trader:
+      reveal-in-countdown: true
+      duration-seconds: 180
+      min-y: 54
+      max-y: 78
+      search-attempts: 30
+
+# Настройки PvP между участниками (/eggvoid pvp <on|off>)
+pvp:
+  enabled: false
+  deny-message: "§6AMCEggVoid | §cPvP между участниками сейчас отключено!"
+  message-cooldown-ms: 1500
+
 # Настройка потери вещей при смерти игрока (в процентах от 0 до 100)
 # Ключевые предметы (non-drop-items) и хотбар (слоты 0-8) никогда не выпадают.
 player-drop:

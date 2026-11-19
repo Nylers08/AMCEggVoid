@@ -39,6 +39,13 @@ public class ItemTier {
         levels.add(levelItemTier);
     }
 
+    public LevelItemTier getLevelByNumber(int levelNumber) {
+        if (levels == null || levelNumber < 1 || levelNumber > levels.size()) {
+            return null;
+        }
+        return levels.get(levelNumber - 1);
+    }
+
     public LevelItemTier getLevel(long currentTick) {
         if (levels == null || levels.isEmpty()) {
             return null;
