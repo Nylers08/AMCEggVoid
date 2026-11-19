@@ -245,3 +245,12 @@ items:
     enchantments:
       sharpness: 4
       unbreaking: 5
+
+  halal_meatball:
+    name: "§6Фрикаделька (халал)"
+    material: "COOKED_CHICKEN"
+    lore:
+      - "§7Сочная фрикаделька прямо с неба"
+      - "§a100% халал"
+    enchantments:
+      fire_aspect: 1

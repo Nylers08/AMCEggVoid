@@ -114,6 +114,46 @@ public class MailService {
         }
     }
 
+    public enum ClaimSingleResult {
+        CLAIMED,
+        PARTIAL,
+        NO_SPACE,
+        EMPTY
+    }
+
+    public synchronized ClaimSingleResult claimAt(Player player, int index) {
+        if (player == null || !player.isOnline()) {
+            return ClaimSingleResult.EMPTY;
+        }
+        PlayerMail mail = getOrCreateMail(player.getName());
+        if (mail == null || index < 0 || index >= mail.size()) {
+            return ClaimSingleResult.EMPTY;
+        }
+        List<ItemStack> items = mail.getMutableItems();
+        ItemStack item = items.get(index);
+        if (item == null || item.getType().isAir()) {
+            items.remove(index);
+            save();
+            return ClaimSingleResult.EMPTY;
+        }
+
+        int beforeAmount = item.getAmount();
+        Map<Integer, ItemStack> leftover = player.getInventory().addItem(item.clone());
+        if (leftover.isEmpty()) {
+            items.remove(index);
+            save();
+            return ClaimSingleResult.CLAIMED;
+        }
+
+        int leftoverAmount = leftover.values().iterator().next().getAmount();
+        if (leftoverAmount < beforeAmount) {
+            item.setAmount(leftoverAmount);
+            save();
+            return ClaimSingleResult.PARTIAL;
+        }
+        return ClaimSingleResult.NO_SPACE;
+    }
+
     public synchronized int claimAll(Player player) {
         if (player == null || !player.isOnline()) {
             return 0;

@@ -14,6 +14,11 @@ import ariolmc.online.aMCEggVoid.core.events.MiniEventManager;
 import ariolmc.online.aMCEggVoid.core.mail.MailCommand;
 import ariolmc.online.aMCEggVoid.core.mail.MailJoinListener;
 import ariolmc.online.aMCEggVoid.core.mail.MailService;
+import ariolmc.online.aMCEggVoid.core.mail.gui.ClaimAllMailAction;
+import ariolmc.online.aMCEggVoid.core.mail.gui.ClaimMailItemAction;
+import ariolmc.online.aMCEggVoid.core.mail.gui.MailMenuFactory;
+import ariolmc.online.aMCEggVoid.core.mail.gui.MailPageAction;
+import io.neris.NGui.core.services.StaticMenuServiceController;
 import ariolmc.online.aMCEggVoid.core.pvp.MemberPvpListener;
 import ariolmc.online.aMCEggVoid.core.pvp.PvpManager;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemGiverModule;
@@ -124,7 +129,13 @@ public final class AMCEggVoid extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new MailJoinListener(mailService), this);
         Bukkit.getPluginManager().registerEvents(new VictoryListener(victoryService), this);
         this.getCommand("eggvoid").setExecutor(new EggVoidCommands(memberList, itemGiverModule, playerDropModule, netherModule, blazeDropModule, piglinBarterModule, traderModule, endModule, endPortalModule, pvpManager, miniEventManager));
-        this.getCommand("mail").setExecutor(new MailCommand(mailService));
+
+        MailMenuFactory mailMenuFactory = new MailMenuFactory(mailService);
+        var actionRegistry = StaticMenuServiceController.getServiceController().getNbtActionRegistry();
+        actionRegistry.register(new ClaimMailItemAction(mailService, mailMenuFactory, 0));
+        actionRegistry.register(new ClaimAllMailAction(mailService, mailMenuFactory));
+        actionRegistry.register(new MailPageAction(mailMenuFactory, 0));
+        this.getCommand("mail").setExecutor(new MailCommand(mailService, mailMenuFactory));
     }
 
     @Override

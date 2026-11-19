@@ -6,6 +6,7 @@ api-version: '26.2'
 load: POSTWORLD
 depend:
   - FastAsyncWorldEdit
+  - NGui
 
 commands:
   eggvoid:

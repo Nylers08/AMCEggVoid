@@ -1,13 +1,21 @@
 package ariolmc.online.aMCEggVoid.core.events;
 
+import ariolmc.online.aMCEggVoid.AMCEggVoid;
 import ariolmc.online.aMCEggVoid.core.EventState;
 import ariolmc.online.aMCEggVoid.core.MemberList;
 import ariolmc.online.aMCEggVoid.core.boss.BossManager;
+import ariolmc.online.aMCEggVoid.core.events.impl.AnvilRainListener;
+import ariolmc.online.aMCEggVoid.core.events.impl.AnvilRainMiniEvent;
 import ariolmc.online.aMCEggVoid.core.events.impl.BossMiniEvent;
+import ariolmc.online.aMCEggVoid.core.events.impl.HangoverMiniEvent;
+import ariolmc.online.aMCEggVoid.core.events.impl.JumpBoostMiniEvent;
 import ariolmc.online.aMCEggVoid.core.events.impl.LootChestMiniEvent;
+import ariolmc.online.aMCEggVoid.core.events.impl.MeatballRainMiniEvent;
 import ariolmc.online.aMCEggVoid.core.events.impl.MobWaveMiniEvent;
 import ariolmc.online.aMCEggVoid.core.events.impl.PvpMiniEvent;
 import ariolmc.online.aMCEggVoid.core.events.impl.TraderMiniEvent;
+import ariolmc.online.aMCEggVoid.core.events.impl.VoidDropListener;
+import ariolmc.online.aMCEggVoid.core.events.impl.VoidDropMiniEvent;
 import ariolmc.online.aMCEggVoid.core.itemGiver.ItemTier;
 import ariolmc.online.aMCEggVoid.core.pvp.PvpManager;
 import ariolmc.online.aMCEggVoid.core.trader.TraderModule;
@@ -63,6 +71,17 @@ public class MiniEventManager {
         registry.register(new BossMiniEvent(bossManager));
         registry.register(new LootChestMiniEvent(memberList, itemTier));
         registry.register(new TraderMiniEvent(memberList, traderModule));
+        VoidDropMiniEvent voidDropMiniEvent = new VoidDropMiniEvent(plugin, AMCEggVoid.getUniqueItemsCfg());
+        registry.register(voidDropMiniEvent);
+        Bukkit.getPluginManager().registerEvents(new VoidDropListener(voidDropMiniEvent), plugin);
+
+        AnvilRainMiniEvent anvilRainMiniEvent = new AnvilRainMiniEvent(plugin, memberList);
+        registry.register(anvilRainMiniEvent);
+        Bukkit.getPluginManager().registerEvents(new AnvilRainListener(anvilRainMiniEvent), plugin);
+
+        registry.register(new HangoverMiniEvent(plugin, memberList));
+        registry.register(new JumpBoostMiniEvent(plugin, memberList));
+        registry.register(new MeatballRainMiniEvent(plugin, memberList, AMCEggVoid.getUniqueItemsCfg()));
     }
 
     public void reloadCfg() {

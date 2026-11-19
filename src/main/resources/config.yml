@@ -142,6 +142,57 @@ mini-events:
       min-y: 54
       max-y: 78
       search-attempts: 30
+    void_drop:
+      reveal-in-countdown: true
+      duration-seconds: 90
+      rewards:
+        top-1:
+          - "void_sword:1"
+          - "TOTEM_OF_UNDYING:1"
+          - "ENCHANTED_GOLDEN_APPLE:2"
+          - "NETHERITE_INGOT:3"
+          - "mega_diamond:4"
+          - "ENDER_PEARL:16"
+        top-2:
+          - "void_pickaxe:1"
+          - "TOTEM_OF_UNDYING:1"
+          - "GOLDEN_APPLE:8"
+          - "NETHERITE_INGOT:1"
+          - "mega_diamond:2"
+          - "BLAZE_ROD:8"
+        top-3:
+          - "sky_axe:1"
+          - "GOLDEN_APPLE:6"
+          - "DIAMOND:16"
+          - "mega_emerald:2"
+          - "OBSIDIAN:16"
+    anvil_rain:
+      reveal-in-countdown: true
+      duration-seconds: 60
+      spawn-interval-ticks: 15
+      anvils-per-player: 2
+      xz-spread: 10
+      y-offset: 92
+      damage-per-block: 2.0
+      max-damage: 40
+    hangover:
+      reveal-in-countdown: true
+      duration-seconds: 45
+      nausea-amplifier: 0
+      blindness-amplifier: 0
+      refresh-interval-ticks: 40
+    jump_boost:
+      reveal-in-countdown: true
+      duration-seconds: 45
+      amplifier: 2
+      refresh-interval-ticks: 40
+    meatball_rain:
+      reveal-in-countdown: true
+      duration-seconds: 45
+      spawn-interval-ticks: 10
+      meatballs-per-player: 2
+      xz-spread: 12
+      y-offset: 28
 
 # Настройки PvP между участниками (/eggvoid pvp <on|off>)
 pvp:
